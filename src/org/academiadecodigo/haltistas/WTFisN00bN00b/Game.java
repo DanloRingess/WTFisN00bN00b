@@ -4,8 +4,6 @@ import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemy;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.GameEntity;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.Keyboard.Keyboard;
 
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
@@ -17,25 +15,33 @@ public class Game {
 
     private CollisionDetector collisionDetector;
 
+    private Enemy enemy;
+
     public Game() {
     }
 
-    public void start() throws InterruptedException{
+    public void start() throws InterruptedException {
 
         GameCanvas canvas = new GameCanvas();
 
-        Enemy enemy = new Enemy();
+        enemy = new Enemy();
         enemy.draw();
 
 
-        while (enemy.getX() > -200) {
+        while (true) {
+
             Thread.sleep(20);
+
             enemy.move();
+
+            if (enemy.getX() < -600) {
+
+                int lastX = enemy.getX();
+
+                enemy.hide();
+                enemy.move(lastX);
+                enemy.draw();
+            }
         }
-
-        enemy.hide();
-        enemy.setX(900);
-        enemy.draw();
-
     }
 }

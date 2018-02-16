@@ -18,7 +18,7 @@ public class Enemy extends GameEntity implements Collidable {
     public Enemy() {
 
         enemyPic = new Picture(initialX, intialY, "assets/supernova.png");
-        enemyPic.grow(-200,-100);
+        enemyPic.grow(-200, -100);
         this.X = initialX;
         this.Y = intialY;
     }
@@ -46,9 +46,17 @@ public class Enemy extends GameEntity implements Collidable {
     public void move() {
 
         this.X += dirX;
-        enemyPic.translate(dirX,0);
+        enemyPic.translate(dirX, 0);
 
     }
+
+    public void move(int lastX) {
+
+        this.X = initialX;
+        enemyPic.translate(initialX - lastX, 0);
+
+    }
+
 
     public int getX() {
         return X;
