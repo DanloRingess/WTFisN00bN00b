@@ -5,7 +5,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Enemy extends GameEntity implements Collidable {
 
-    private Picture enemyPic;
+    private Picture enemySprite;
 
     private int initialX = 900;
     private int intialY = 500;
@@ -17,8 +17,8 @@ public class Enemy extends GameEntity implements Collidable {
 
     public Enemy() {
 
-        enemyPic = new Picture(initialX, intialY, "assets/supernova.png");
-        enemyPic.grow(-200, -100);
+        enemySprite = new Picture(initialX, intialY, "assets/supernova.png");
+        enemySprite.grow(-200, -100);
         this.X = initialX;
         this.Y = intialY;
     }
@@ -26,7 +26,7 @@ public class Enemy extends GameEntity implements Collidable {
     @Override
     public void draw() {
 
-        enemyPic.draw();
+        enemySprite.draw();
 
     }
 
@@ -38,7 +38,7 @@ public class Enemy extends GameEntity implements Collidable {
     @Override
     public void hide() {
 
-        enemyPic.delete();
+        enemySprite.delete();
 
     }
 
@@ -46,14 +46,14 @@ public class Enemy extends GameEntity implements Collidable {
     public void move() {
 
         this.X += dirX;
-        enemyPic.translate(dirX, 0);
+        enemySprite.translate(dirX, 0);
 
     }
 
     public void move(int lastX) {
 
         this.X = initialX;
-        enemyPic.translate(initialX - lastX, 0);
+        enemySprite.translate(initialX - lastX, 0);
 
     }
 
