@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<project name="N00bN00sComeback" default="jarfile">
+<project name="WTFisN00bN00b" default="jarfile">
 
     <!-- Initialize build properties  -->
     <target name="init" description="Initializes properties">
-        <property name="project.name" value="N00bN00sComeback" />
+        <property name="project.name" value="WTFisN00bN00b" />
         <property name="src.dir" value="src" />
         <property name="main.class" value="org.academiadecodigo.bootcamp.haltistas.Main" />
         <property name="build.dir" value="build" />
