@@ -20,11 +20,8 @@ public class Game {
 
     public void start() {
 
-
-        System.out.println("Hello NOOB NOOB");
-
-        Picture pic = new Picture(20, 220, "http://static0.bigstockphoto.com/thumbs/3/5/2/small2/25346960.jpg");
-        pic.draw();
+        Picture background = new Picture(10, 10, "assets/worldenders_cave.jpeg");
+        background.draw();
 
     }
 }
