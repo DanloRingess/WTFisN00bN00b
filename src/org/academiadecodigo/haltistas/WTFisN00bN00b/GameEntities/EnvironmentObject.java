@@ -6,7 +6,7 @@ public abstract class EnvironmentObject extends GameEntity {
     }
 
     @Override
-    void draw() {
+    void show() {
 
     }
 }

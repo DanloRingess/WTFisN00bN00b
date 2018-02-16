@@ -28,10 +28,10 @@ public class Game {
         GameCanvas canvas = new GameCanvas();
 
         enemy = new Enemy();
-        enemy.draw();
+        enemy.show();
 
         n00bn00b = new Character();
-        n00bn00b.draw();
+        n00bn00b.show();
 
 
         while (true) {
@@ -46,7 +46,7 @@ public class Game {
 
                 enemy.hide();
                 enemy.move(lastX);
-                enemy.draw();
+                enemy.show();
             }
         }
     }

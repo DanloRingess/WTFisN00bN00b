@@ -26,7 +26,7 @@ public class Character extends GameEntity implements Collidable {
     }
 
     @Override
-     public void draw() {
+     public void show() {
 
         characterSprite.draw();
 
@@ -39,8 +39,19 @@ public class Character extends GameEntity implements Collidable {
 
     }
 
-    @Override
-    void show() {
+    public int getX() {
+        return X;
+    }
 
+    public int getY() {
+        return Y;
+    }
+
+    public int getWidth() {
+        return characterSprite.getWidth();
+    }
+
+    public int getHeight() {
+        return characterSprite.getHeight();
     }
 }

@@ -5,11 +5,23 @@ public abstract class GameEntity {
     public GameEntity() {
     }
 
-    abstract void draw();
+    private int X;
+    private  int Y;
 
-    abstract  void show();
 
-    abstract  void hide();
+
+    abstract void show();
+
+    abstract void hide();
 
     abstract void move();
+
+    abstract int getX();
+
+    abstract int getY();
+
+    abstract int getWidth();
+
+    abstract int getHeight();
+
 }

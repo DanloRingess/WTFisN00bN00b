@@ -24,14 +24,9 @@ public class Enemy extends GameEntity implements Collidable {
     }
 
     @Override
-    public void draw() {
+    public void show() {
 
         enemySprite.draw();
-
-    }
-
-    @Override
-    void show() {
 
     }
 
@@ -62,7 +57,15 @@ public class Enemy extends GameEntity implements Collidable {
         return X;
     }
 
-    public void setX(int x) {
-        X = x;
+    public int getY() {
+        return Y;
+    }
+
+    public int getWidth() {
+        return enemySprite.getWidth();
+    }
+
+    public int getHeight() {
+        return enemySprite.getHeight();
     }
 }
