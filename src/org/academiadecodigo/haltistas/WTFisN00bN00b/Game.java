@@ -1,7 +1,8 @@
-package org.academiadecodigo.haltistas.N00bN00bsComeback;
+package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
-import org.academiadecodigo.haltistas.N00bN00bsComeback.GameEntities.GameEntity;
-import org.academiadecodigo.haltistas.N00bN00bsComeback.Keyboard.Keyboard;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.GameEntity;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.Keyboard.Keyboard;
+
 
 public class Game {
 
@@ -17,6 +18,8 @@ public class Game {
     }
 
     public void start() {
+
+
 
     }
 }

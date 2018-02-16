@@ -1,4 +1,4 @@
-package org.academiadecodigo.haltistas.N00bN00bsComeback;
+package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
 public class Main {
 

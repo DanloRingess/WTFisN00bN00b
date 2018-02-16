@@ -1,6 +1,6 @@
-package org.academiadecodigo.haltistas.N00bN00bsComeback.GameEntities;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities;
 
-import org.academiadecodigo.haltistas.N00bN00bsComeback.Interfaces.Collidable;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.Interfaces.Collidable;
 
 public class Character extends GameEntity implements Collidable {
 
