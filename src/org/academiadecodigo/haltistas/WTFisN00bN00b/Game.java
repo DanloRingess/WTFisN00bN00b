@@ -25,6 +25,9 @@ public class Game {
 
         Enemy enemy = new Enemy();
         enemy.draw();
+        enemy.hide();
+        enemy.draw();
+
 
     }
 }
