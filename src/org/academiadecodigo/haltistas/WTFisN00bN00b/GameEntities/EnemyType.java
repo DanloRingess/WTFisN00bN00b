@@ -7,4 +7,6 @@ public enum EnemyType {
     CROCUBOT,
     MILLION_ANTS,
     ALAN_RAILS
+
+
 }
