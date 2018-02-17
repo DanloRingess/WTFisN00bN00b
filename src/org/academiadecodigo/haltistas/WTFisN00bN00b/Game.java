@@ -15,7 +15,7 @@ public class Game {
 
     private GameEntity[] gameEntities;
 
-    private CollisionDetector collisionDetector;
+    //private CollisionDetector collisionDetector;
 
     private Supernova enemy;
 
