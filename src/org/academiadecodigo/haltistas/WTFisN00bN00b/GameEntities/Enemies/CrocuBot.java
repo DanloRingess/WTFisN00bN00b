@@ -7,7 +7,7 @@ public class CrocuBot extends Enemy {
     Picture crocubotSprite;
 
     private int initialX = 850;
-    private int intialY = 100;
+    private int initialY = 100;
 
     private int X;
     private int Y;
@@ -16,10 +16,10 @@ public class CrocuBot extends Enemy {
 
     public CrocuBot() {
 
-        crocubotSprite = new Picture(initialX, intialY, "assets/crocubot.png");
+        crocubotSprite = new Picture(initialX, initialY, "assets/crocubot.png");
         crocubotSprite.grow(-300, -400);
         this.X = initialX;
-        this.Y = intialY;
+        this.Y = initialY;
     }
 
     @Override

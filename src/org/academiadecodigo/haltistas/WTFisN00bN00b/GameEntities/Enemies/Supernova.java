@@ -7,7 +7,7 @@ public class Supernova extends Enemy {
     private Picture supernovaSprite;
 
     private int initialX = 900;
-    private int intialY = 200;
+    private int initialY = 200;
 
     private int X;
     private int Y;
@@ -16,10 +16,10 @@ public class Supernova extends Enemy {
 
     public Supernova() {
 
-        supernovaSprite = new Picture(initialX, intialY, "assets/supernova.png");
+        supernovaSprite = new Picture(initialX, initialY, "assets/supernova.png");
         supernovaSprite.grow(-200, -100);
         this.X = initialX;
-        this.Y = intialY;
+        this.Y = initialY;
     }
 
     @Override
@@ -41,7 +41,6 @@ public class Supernova extends Enemy {
 
         supernovaSprite.translate(dirX, 0);
         this.X += dirX;
-
     }
 
     @Override
@@ -49,7 +48,6 @@ public class Supernova extends Enemy {
 
         supernovaSprite.translate(initialX - lastX, 0);
         this.X = initialX;
-
     }
 
     @Override
