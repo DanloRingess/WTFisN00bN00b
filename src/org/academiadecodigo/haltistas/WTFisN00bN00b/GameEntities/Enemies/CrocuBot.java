@@ -2,22 +2,22 @@ package org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Supernova extends Enemy {
+public class CrocuBot extends Enemy {
 
-    private Picture supernovaSprite;
+    Picture crocubotSprite;
 
-    private int initialX = 900;
-    private int intialY = 200;
+    private int initialX = 850;
+    private int intialY = 100;
 
     private int X;
     private int Y;
 
     private int dirX = -10;
 
-    public Supernova() {
+    public CrocuBot() {
 
-        supernovaSprite = new Picture(initialX, intialY, "assets/supernova.png");
-        supernovaSprite.grow(-200, -100);
+        crocubotSprite = new Picture(initialX, intialY, "assets/crocubot.png");
+        crocubotSprite.grow(-300, -400);
         this.X = initialX;
         this.Y = intialY;
     }
@@ -25,31 +25,26 @@ public class Supernova extends Enemy {
     @Override
     public void show() {
 
-        supernovaSprite.draw();
-
+        crocubotSprite.draw();
     }
 
     @Override
     public void hide() {
 
-        supernovaSprite.delete();
-
+        crocubotSprite.delete();
     }
 
     @Override
     public void move() {
 
-        supernovaSprite.translate(dirX, 0);
+        crocubotSprite.translate(dirX,0);
         this.X += dirX;
-
     }
 
     @Override
     public void moveBack(int lastX) {
 
-        supernovaSprite.translate(initialX - lastX, 0);
-        this.X = initialX;
-
+        crocubotSprite.translate(initialX - lastX, 0);
     }
 
     @Override
@@ -64,12 +59,11 @@ public class Supernova extends Enemy {
 
     @Override
     public int getWidth() {
-        return supernovaSprite.getWidth();
+        return crocubotSprite.getWidth();
     }
 
     @Override
     public int getHeight() {
-        return supernovaSprite.getHeight();
+        return crocubotSprite.getHeight();
     }
 }
-
