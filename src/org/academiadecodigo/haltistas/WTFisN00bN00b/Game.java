@@ -68,6 +68,10 @@ public class Game {
                 enemy.moveBack(lastX);
                 enemy.show();
             }
+
+            System.out.println(n00bn00b.collides(enemy));
+
+
         }
     }
 }
