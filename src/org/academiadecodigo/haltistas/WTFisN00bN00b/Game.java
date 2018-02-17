@@ -1,7 +1,8 @@
 package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Character;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemy;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies.Enemy;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies.Supernova;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.GameEntity;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.Keyboard.Keyboard;
 
@@ -16,7 +17,7 @@ public class Game {
 
     private CollisionDetector collisionDetector;
 
-    private Enemy enemy;
+    private Supernova enemy;
 
     private Character n00bn00b;
 
@@ -27,7 +28,7 @@ public class Game {
 
         GameCanvas canvas = new GameCanvas();
 
-        enemy = new Enemy();
+        enemy = new Supernova();
         enemy.show();
 
         n00bn00b = new Character();
