@@ -7,26 +7,34 @@ public class Character extends GameEntity implements Collidable {
 
     private Picture characterSprite;
 
+    private boolean goingUp;
+
     private int intialX = -100;
     private int initialY = 350;
 
     private int X;
     private int Y;
 
+    private int dirY;
+
     public Character() {
 
-        characterSprite = new Picture(intialX,initialY,"assets/n00b_haltista.png");
-        characterSprite.grow(-120,-200);
+        characterSprite = new Picture(intialX, initialY, "assets/n00b_haltista.png");
+        characterSprite.grow(-120, -200);
+        goingUp = false;
         this.X = intialX;
         this.Y = initialY;
     }
 
+    @Override
     public void move() {
 
+            this.Y += dirY;
+            characterSprite.translate(0, dirY);
     }
 
     @Override
-     public void show() {
+    public void show() {
 
         characterSprite.draw();
 
@@ -53,5 +61,17 @@ public class Character extends GameEntity implements Collidable {
 
     public int getHeight() {
         return characterSprite.getHeight();
+    }
+
+    public boolean isGoingUp() {
+        return goingUp;
+    }
+
+    public void setGoingUp(boolean goingUp) {
+        this.goingUp = goingUp;
+    }
+
+    public void setDirY(int dirY) {
+        this.dirY = dirY;
     }
 }

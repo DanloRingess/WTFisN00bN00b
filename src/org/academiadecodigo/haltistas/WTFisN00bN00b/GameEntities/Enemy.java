@@ -45,7 +45,7 @@ public class Enemy extends GameEntity implements Collidable {
 
     }
 
-    public void move(int lastX) {
+    public void moveBack(int lastX) {
 
         this.X = initialX;
         enemySprite.translate(initialX - lastX, 0);

@@ -40,12 +40,32 @@ public class Game {
 
             enemy.move();
 
+            if (n00bn00b.getY() > 101 && !n00bn00b.isGoingUp()) {
+
+                n00bn00b.setDirY(-5);
+                n00bn00b.move();
+
+                if (n00bn00b.getY() == 100) {
+                    n00bn00b.setGoingUp(true);
+                }
+            }
+
+            if (n00bn00b.getY() < 351 && n00bn00b.isGoingUp()) {
+
+                n00bn00b.setDirY(5);
+                n00bn00b.move();
+
+                if (n00bn00b.getY() == 350) {
+                    n00bn00b.setGoingUp(false);
+                }
+            }
+
             if (enemy.getX() < -600) {
 
                 int lastX = enemy.getX();
 
                 enemy.hide();
-                enemy.move(lastX);
+                enemy.moveBack(lastX);
                 enemy.show();
             }
         }
