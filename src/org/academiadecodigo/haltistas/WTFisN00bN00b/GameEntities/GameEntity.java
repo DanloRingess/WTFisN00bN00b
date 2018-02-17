@@ -10,4 +10,6 @@ public abstract class GameEntity {
     abstract  void show();
 
     abstract  void hide();
+
+    abstract void move();
 }

@@ -1,9 +1,9 @@
 package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
+import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemy;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.GameEntity;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.Keyboard.Keyboard;
 
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
@@ -15,13 +15,33 @@ public class Game {
 
     private CollisionDetector collisionDetector;
 
+    private Enemy enemy;
+
     public Game() {
     }
 
-    public void start() {
+    public void start() throws InterruptedException {
 
-        Picture background = new Picture(10, 10, "assets/worldenders_cave.jpeg");
-        background.draw();
+        GameCanvas canvas = new GameCanvas();
 
+        enemy = new Enemy();
+        enemy.draw();
+
+
+        while (true) {
+
+            Thread.sleep(20);
+
+            enemy.move();
+
+            if (enemy.getX() < -600) {
+
+                int lastX = enemy.getX();
+
+                enemy.hide();
+                enemy.move(lastX);
+                enemy.draw();
+            }
+        }
     }
 }
