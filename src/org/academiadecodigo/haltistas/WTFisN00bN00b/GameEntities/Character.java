@@ -3,7 +3,7 @@ package org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.Interfaces.Collidable;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Character extends GameEntity implements Collidable {
+public class Character extends GameEntity {
 
     private Picture characterSprite;
 
@@ -29,8 +29,8 @@ public class Character extends GameEntity implements Collidable {
     @Override
     public void move() {
 
-            this.Y += dirY;
-            characterSprite.translate(0, dirY);
+        this.Y += dirY;
+        characterSprite.translate(0, dirY);
     }
 
     @Override
@@ -74,4 +74,6 @@ public class Character extends GameEntity implements Collidable {
     public void setDirY(int dirY) {
         this.dirY = dirY;
     }
+
+
 }
