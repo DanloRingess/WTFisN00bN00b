@@ -1,35 +1,36 @@
 package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Character;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies.Supernova;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.GameEntity;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies.*;
 
 
 public class Game {
 
-    private Scoreboard scoreboard;
 
-    private GameEntity[] gameEntities;
+    private Enemy[] enemy;
 
-    private Supernova enemy;
+    private Enemy activeEnemy;
 
     private Character n00bn00b;
 
     private Controller controller;
 
+    private int tickCounter;
+    private int cycleCounter;
 
-    public Game() {
-    }
+    private int delay;
 
-    public void start() throws InterruptedException {
+    public void init() {
 
         GameCanvas canvas = new GameCanvas();
 
-        scoreboard = new Scoreboard(1300, 30);
-        scoreboard.init();
-
-        enemy = new Supernova();
-        enemy.show();
+        enemy = new Enemy[]{
+                new Supernova(),
+                new CrocuBot(),
+                new MillionAnts(),
+                new VinceMaximus(),
+                new AlanRails()
+        };
 
         n00bn00b = new Character();
         n00bn00b.show();
@@ -38,23 +39,98 @@ public class Game {
 
         controller.keyboardInit();
 
+        tickCounter = 0;                  // number of times while loop runs
+
+        delay = 15;
+    }
+
+    public void start() throws InterruptedException {
+
         while (true) {
 
-            Thread.sleep(20);
+            Thread.sleep(delay);
 
-            enemy.move();
+            checkEnemyCycle();
+
+            activeEnemy.move();
 
             n00bn00b.move();
 
-            if (enemy.getX() < -600) {
+            tickCounter++;
+            cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
 
-                int lastX = enemy.getX();
+            System.out.println(tickCounter);
+            System.out.println(cycleCounter);
+        }
+    }
 
-                enemy.hide();
-                enemy.moveBack(lastX);
-                enemy.show();
-            }
+    private void checkEnemyCycle() {
+        if (tickCounter % 165 == 0) {
+
+            selectActiveEnemy();
+        }
+    }
+
+    private void selectActiveEnemy() {
+
+        switch (cycleCounter % 10) {
+            case 0:
+                activeEnemy = enemy[0];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 1:
+                activeEnemy = enemy[1];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 2:
+                activeEnemy = enemy[2];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 3:
+                activeEnemy = enemy[3];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 4:
+                activeEnemy = enemy[0];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 5:
+                activeEnemy = enemy[1];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 6:
+                activeEnemy = enemy[2];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 7:
+                activeEnemy = enemy[3];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 8:
+                activeEnemy = enemy[0];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 9:
+                activeEnemy = enemy[1];
+                activeEnemy.moveBack(activeEnemy.getX());
+
+                if (delay > 1) {
+
+                    delay -= 1;
+                }
+
+                break;
         }
     }
 }
+
 

@@ -6,8 +6,11 @@ public class VinceMaximus extends Enemy {
 
     private Picture vinceSprite;
 
-    private int initialX = 900;
-    private int initialY = 100;
+    private int initialX = 1000;
+    private int initialY = 200;
+
+    private int finalX = -700;
+    private int finalY = 200;
 
     private int X;
     private int Y;
@@ -19,9 +22,10 @@ public class VinceMaximus extends Enemy {
 
     public VinceMaximus() {
 
-        vinceSprite = new Picture(initialX, initialY, "assets/vince_maximus.png");
-        this.X = initialX;
-        this.Y = initialY;
+        vinceSprite = new Picture(finalX, finalY, "assets/vince_maximus.png");
+        this.X = finalX;
+        this.Y = finalY;
+        show();
     }
 
     @Override
@@ -41,34 +45,36 @@ public class VinceMaximus extends Enemy {
     @Override
     public void move() {
 
-        if (Y < 251 && !rising) {
+        if (X > finalX) {
+            if (Y < 251 && !rising) {
 
-            dirY = 5;
+                dirY = 5;
 
-            vinceSprite.translate(dirX, dirY);
+                vinceSprite.translate(dirX, dirY);
 
-            this.X += dirX;
-            this.Y += dirY;
+                this.X += dirX;
+                this.Y += dirY;
 
-            if (Y == 250) {
-                rising = true;
+                if (Y == 250) {
+                    rising = true;
+                }
             }
-        }
 
-        if (Y > 100 && rising) {
+            if (Y > 100 && rising) {
 
-            dirY = -5;
+                dirY = -5;
 
-            vinceSprite.translate(dirX, dirY);
+                vinceSprite.translate(dirX, dirY);
 
-            this.X += dirX;
-            this.Y += dirY;
+                this.X += dirX;
+                this.Y += dirY;
 
-            if (Y == 100) {
-                rising = false;
+                if (Y == 100) {
+                    rising = false;
+                }
             }
-        }
 
+        }
 
     }
 
@@ -97,5 +103,10 @@ public class VinceMaximus extends Enemy {
     @Override
     public int getHeight() {
         return vinceSprite.getHeight();
+    }
+
+    @Override
+    public int getFinalX() {
+        return finalX;
     }
 }
