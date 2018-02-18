@@ -6,11 +6,11 @@ public class CrocuBot extends Enemy {
 
     Picture crocubotSprite;
 
-    private int initialX = 850;
-    private int initialY = 100;
+    private int initialX = 1100;
+    private int initialY = 450;
 
     private int finalX = -600;
-    private int finalY = 100;
+    private int finalY = 450;
 
     private int X;
     private int Y;
@@ -20,7 +20,6 @@ public class CrocuBot extends Enemy {
     public CrocuBot() {
 
         crocubotSprite = new Picture(finalX, finalY, "assets/crocubot.png");
-        crocubotSprite.grow(-300, -400);
         this.X = finalX;
         this.Y = finalY;
         show();
@@ -51,6 +50,7 @@ public class CrocuBot extends Enemy {
     public void moveBack(int lastX) {
 
         crocubotSprite.translate(initialX - lastX, 0);
+        this.X = initialX;
     }
 
     @Override

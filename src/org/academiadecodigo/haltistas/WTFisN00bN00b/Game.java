@@ -42,50 +42,65 @@ public class Game {
 
         while (true) {
 
-            Thread.sleep(25);
+            Thread.sleep(10);
 
-            if (tickCounter % 150 == 0) {
+            if (tickCounter % 165 == 0) {
                 switch (cycleCounter % 10) {
-                    case 1:
+                    case 0:
                         activeEnemy = enemy[0];
+                        activeEnemy.moveBack(activeEnemy.getX());
+                        break;
+
+                    case 1:
+                        activeEnemy = enemy[1];
+                        activeEnemy.moveBack(activeEnemy.getX());
                         break;
 
                     case 2:
-                        activeEnemy = enemy[0];
+                        activeEnemy = enemy[2];
+                        activeEnemy.moveBack(activeEnemy.getX());
                         break;
 
                     case 3:
-                        activeEnemy = enemy[0];
+                        activeEnemy = enemy[3];
+                        activeEnemy.moveBack(activeEnemy.getX());
                         break;
 
                     case 4:
                         activeEnemy = enemy[0];
+                        activeEnemy.moveBack(activeEnemy.getX());
                         break;
 
                     case 5:
-                        activeEnemy = enemy[0];
+                        activeEnemy = enemy[1];
+                        activeEnemy.moveBack(activeEnemy.getX());
                         break;
 
                     case 6:
-                        activeEnemy = enemy[0];
+                        activeEnemy = enemy[2];
+                        activeEnemy.moveBack(activeEnemy.getX());
                         break;
 
                     case 7:
-                        activeEnemy = enemy[0];
+                        activeEnemy = enemy[3];
+                        activeEnemy.moveBack(activeEnemy.getX());
                         break;
 
                     case 8:
                         activeEnemy = enemy[0];
+                        activeEnemy.moveBack(activeEnemy.getX());
                         break;
 
                     case 9:
-                        activeEnemy = enemy[0];
-                        break;
-
-                    case 0:
-                        activeEnemy = enemy[0];
+                        activeEnemy = enemy[1];
+                        activeEnemy.moveBack(activeEnemy.getX());
                         break;
                 }
+            }
+
+            if (activeEnemy.getX() == activeEnemy.getFinalX()) {
+
+                activeEnemy.moveBack(activeEnemy.getX());
             }
 
             activeEnemy.move();
@@ -93,12 +108,7 @@ public class Game {
             n00bn00b.move();
 
             tickCounter++;
-            cycleCounter = tickCounter / 150; // number of game cycles (150 ticks per cycle)
-
-            if (activeEnemy.getX() == activeEnemy.getFinalX()) {
-
-                activeEnemy.moveBack(activeEnemy.getX());
-            }
+            cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
 
             System.out.println(tickCounter);
             System.out.println(cycleCounter);

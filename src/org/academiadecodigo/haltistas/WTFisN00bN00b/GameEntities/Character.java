@@ -9,8 +9,8 @@ public class Character extends GameEntity implements Collidable {
 
     private boolean jumping;
 
-    private int intialX = -100;
-    private int initialY = 350;
+    private int intialX = 80;
+    private int initialY = 450;
 
     private int X;
     private int Y;
@@ -20,7 +20,6 @@ public class Character extends GameEntity implements Collidable {
     public Character() {
 
         characterSprite = new Picture(intialX, initialY, "assets/n00b_haltista.png");
-        characterSprite.grow(-120, -200);
         jumping = false;
         this.X = intialX;
         this.Y = initialY;
@@ -36,11 +35,11 @@ public class Character extends GameEntity implements Collidable {
         this.Y += dirY;
         characterSprite.translate(0, dirY);
 
-        if (Y == 200) {
+        if (Y <= 100) {
             fall();
         }
 
-        if (Y == initialY) {
+        if (Y >= initialY) {
             jumping = false;
         }
     }
@@ -48,13 +47,13 @@ public class Character extends GameEntity implements Collidable {
     public void jump(){
         if (!jumping) {
 
-            dirY = -5;
+            dirY = -10;
             jumping = true;
         }
     }
 
     private void fall() {
-        dirY = 5;
+        dirY = 9;
     }
 
     @Override

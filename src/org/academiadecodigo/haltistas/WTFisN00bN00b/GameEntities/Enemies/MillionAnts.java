@@ -9,8 +9,11 @@ public class MillionAnts extends Enemy {
     private int initialX = 1200;
     private int initialY = 500;
 
-    Picture antsSprite1 = new Picture(initialX, initialY, "assets/million_ants.png");
-    Picture antsSprite2 = new Picture(initialX, initialY, "assets/million_ants_2.png");
+    private int finalX = -600;
+    private int finalY = 500;
+
+    Picture antsSprite1 = new Picture(finalX, finalY, "assets/million_ants.png");
+    Picture antsSprite2 = new Picture(finalX, finalY, "assets/million_ants_2.png");
 
     private int X;
     private int Y;
@@ -20,7 +23,7 @@ public class MillionAnts extends Enemy {
     public MillionAnts() {
 
         antsSprite = antsSprite1;
-        this.X = initialX;
+        this.X = finalX;
         this.Y = initialY;
     }
 
@@ -87,6 +90,6 @@ public class MillionAnts extends Enemy {
 
     @Override
     public int getFinalX() {
-        return 0;
+        return finalX;
     }
 }
