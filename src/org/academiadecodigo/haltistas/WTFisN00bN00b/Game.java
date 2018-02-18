@@ -1,25 +1,22 @@
 package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Character;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies.Enemy;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies.Supernova;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.GameEntity;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.Keyboard.Keyboard;
 
 
 public class Game {
 
     private Scoreboard scoreboard;
 
-    private Keyboard keyboard;
-
     private GameEntity[] gameEntities;
-
-    //private CollisionDetector collisionDetector;
 
     private Supernova enemy;
 
     private Character n00bn00b;
+
+    private Controller controller;
+
 
     public Game() {
     }
@@ -34,6 +31,9 @@ public class Game {
         n00bn00b = new Character();
         n00bn00b.show();
 
+        controller = new Controller(n00bn00b);
+
+        controller.keyboardInit();
 
         while (true) {
 
@@ -41,25 +41,7 @@ public class Game {
 
             enemy.move();
 
-            if (n00bn00b.getY() > 101 && !n00bn00b.isGoingUp()) {
-
-                n00bn00b.setDirY(-5);
-                n00bn00b.move();
-
-                if (n00bn00b.getY() == 100) {
-                    n00bn00b.setGoingUp(true);
-                }
-            }
-
-            if (n00bn00b.getY() < 351 && n00bn00b.isGoingUp()) {
-
-                n00bn00b.setDirY(5);
-                n00bn00b.move();
-
-                if (n00bn00b.getY() == 350) {
-                    n00bn00b.setGoingUp(false);
-                }
-            }
+            n00bn00b.move();
 
             if (enemy.getX() < -600) {
 
@@ -72,3 +54,4 @@ public class Game {
         }
     }
 }
+
