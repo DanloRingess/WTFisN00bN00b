@@ -9,6 +9,9 @@ public class CrocuBot extends Enemy {
     private int initialX = 850;
     private int initialY = 100;
 
+    private int finalX = -600;
+    private int finalY = 100;
+
     private int X;
     private int Y;
 
@@ -16,10 +19,11 @@ public class CrocuBot extends Enemy {
 
     public CrocuBot() {
 
-        crocubotSprite = new Picture(initialX, initialY, "assets/crocubot.png");
+        crocubotSprite = new Picture(finalX, finalY, "assets/crocubot.png");
         crocubotSprite.grow(-300, -400);
-        this.X = initialX;
-        this.Y = initialY;
+        this.X = finalX;
+        this.Y = finalY;
+        show();
     }
 
     @Override
@@ -37,8 +41,10 @@ public class CrocuBot extends Enemy {
     @Override
     public void move() {
 
-        crocubotSprite.translate(dirX,0);
-        this.X += dirX;
+        if (X > finalX) {
+            crocubotSprite.translate(dirX, 0);
+            this.X += dirX;
+        }
     }
 
     @Override
@@ -65,5 +71,10 @@ public class CrocuBot extends Enemy {
     @Override
     public int getHeight() {
         return crocubotSprite.getHeight();
+    }
+
+    @Override
+    public int getFinalX() {
+        return finalX;
     }
 }

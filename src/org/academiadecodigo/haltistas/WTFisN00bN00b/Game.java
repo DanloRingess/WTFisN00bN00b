@@ -2,20 +2,22 @@ package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Character;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies.*;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.GameEntity;
 
 
 public class Game {
 
+
     private Enemy[] enemy;
+
+    private Enemy activeEnemy;
 
     private Character n00bn00b;
 
     private Controller controller;
 
+    private int tickCounter;
+    private int cycleCounter;
 
-    public Game() {
-    }
 
     public void start() throws InterruptedException {
 
@@ -29,8 +31,6 @@ public class Game {
                 new AlanRails()
         };
 
-        enemy[0].show();
-
         n00bn00b = new Character();
         n00bn00b.show();
 
@@ -38,22 +38,70 @@ public class Game {
 
         controller.keyboardInit();
 
+        tickCounter = 0;                  // number of times while loop runs
+
         while (true) {
 
-            Thread.sleep(20);
+            Thread.sleep(25);
 
-            enemy[0].move();
+            if (tickCounter % 150 == 0) {
+                switch (cycleCounter % 10) {
+                    case 1:
+                        activeEnemy = enemy[0];
+                        break;
+
+                    case 2:
+                        activeEnemy = enemy[0];
+                        break;
+
+                    case 3:
+                        activeEnemy = enemy[0];
+                        break;
+
+                    case 4:
+                        activeEnemy = enemy[0];
+                        break;
+
+                    case 5:
+                        activeEnemy = enemy[0];
+                        break;
+
+                    case 6:
+                        activeEnemy = enemy[0];
+                        break;
+
+                    case 7:
+                        activeEnemy = enemy[0];
+                        break;
+
+                    case 8:
+                        activeEnemy = enemy[0];
+                        break;
+
+                    case 9:
+                        activeEnemy = enemy[0];
+                        break;
+
+                    case 0:
+                        activeEnemy = enemy[0];
+                        break;
+                }
+            }
+
+            activeEnemy.move();
 
             n00bn00b.move();
 
-            if (enemy[0].getX() < -600) {
+            tickCounter++;
+            cycleCounter = tickCounter / 150; // number of game cycles (150 ticks per cycle)
 
-                int lastX = enemy[0].getX();
+            if (activeEnemy.getX() == activeEnemy.getFinalX()) {
 
-                enemy[0].hide();
-                enemy[0].moveBack(lastX);
-                enemy[0].show();
+                activeEnemy.moveBack(activeEnemy.getX());
             }
+
+            System.out.println(tickCounter);
+            System.out.println(cycleCounter);
         }
     }
 }

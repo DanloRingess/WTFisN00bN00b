@@ -9,6 +9,8 @@ public class VinceMaximus extends Enemy {
     private int initialX = 900;
     private int initialY = 100;
 
+    private int finalX = -400;
+
     private int X;
     private int Y;
 
@@ -22,6 +24,7 @@ public class VinceMaximus extends Enemy {
         vinceSprite = new Picture(initialX, initialY, "assets/vince_maximus.png");
         this.X = initialX;
         this.Y = initialY;
+        show();
     }
 
     @Override
@@ -97,5 +100,10 @@ public class VinceMaximus extends Enemy {
     @Override
     public int getHeight() {
         return vinceSprite.getHeight();
+    }
+
+    @Override
+    public int getFinalX() {
+        return finalX;
     }
 }

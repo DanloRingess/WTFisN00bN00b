@@ -41,4 +41,9 @@ public class AlanRails extends Enemy {
     public int getHeight() {
         return 0;
     }
+
+    @Override
+    public int getFinalX() {
+        return 0;
+    }
 }
