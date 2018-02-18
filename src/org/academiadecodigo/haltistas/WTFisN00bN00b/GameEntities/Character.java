@@ -36,11 +36,12 @@ public class Character extends GameEntity implements Collidable {
         this.Y += dirY;
         characterSprite.translate(0, dirY);
 
-        if (Y == 150) {
+        if (Y <= 120) {
             fall();
+            System.out.println(Y);
         }
 
-        if (Y == initialY) {
+        if (Y >= initialY) {
             jumping = false;
         }
     }
@@ -48,14 +49,35 @@ public class Character extends GameEntity implements Collidable {
     public void jump(){
         if (!jumping) {
 
-            dirY = -5;
+            dirY = -23;
             jumping = true;
         }
     }
 
     private void fall() {
-        dirY = 5;
+        dirY = 8;
+
     }
+    public void crouch() {
+
+        if (jumping) {
+            dirY = 20;
+        }
+
+    }
+
+    public int getIntialX() {
+        return intialX;
+    }
+
+    public int getInitialY() {
+        return initialY;
+    }
+
+
+
+
+
 
     @Override
     public void show() {

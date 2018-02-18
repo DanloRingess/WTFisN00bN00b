@@ -22,16 +22,34 @@ public class Controller implements KeyboardHandler {
         event.setKey(KeyboardEvent.KEY_SPACE);
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event);
+
+        event = new KeyboardEvent();
+        event.setKey(KeyboardEvent.KEY_DOWN);
+        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event);
     }
 
 
     @Override
     public void keyPressed(KeyboardEvent e) {
-        System.out.println("DDDDDD");
-        character.jump();
+
+        switch (e.getKey()) {
+
+            case KeyboardEvent.KEY_SPACE:
+                character.jump();
+                break;
+
+            case KeyboardEvent.KEY_DOWN:
+                character.crouch();
+                break;
+
+        }
+
     }
 
     @Override
     public void keyReleased(KeyboardEvent e) {
+
+
     }
 }
