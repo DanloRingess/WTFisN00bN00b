@@ -27,7 +27,6 @@ public class Controller implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent e) {
-        System.out.println("DDDDDD");
         character.jump();
     }
 

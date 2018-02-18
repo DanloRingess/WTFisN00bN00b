@@ -1,17 +1,13 @@
 package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Character;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies.Supernova;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies.*;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.GameEntity;
 
 
 public class Game {
 
-    private Scoreboard scoreboard;
-
-    private GameEntity[] gameEntities;
-
-    private Supernova enemy;
+    private Enemy[] enemy;
 
     private Character n00bn00b;
 
@@ -25,8 +21,15 @@ public class Game {
 
         GameCanvas canvas = new GameCanvas();
 
-        enemy = new Supernova();
-        enemy.show();
+        enemy = new Enemy[] {
+                new Supernova(),
+                new CrocuBot(),
+                new MillionAnts(),
+                new VinceMaximus(),
+                new AlanRails()
+        };
+
+        enemy[0].show();
 
         n00bn00b = new Character();
         n00bn00b.show();
@@ -39,17 +42,17 @@ public class Game {
 
             Thread.sleep(20);
 
-            enemy.move();
+            enemy[0].move();
 
             n00bn00b.move();
 
-            if (enemy.getX() < -600) {
+            if (enemy[0].getX() < -600) {
 
-                int lastX = enemy.getX();
+                int lastX = enemy[0].getX();
 
-                enemy.hide();
-                enemy.moveBack(lastX);
-                enemy.show();
+                enemy[0].hide();
+                enemy[0].moveBack(lastX);
+                enemy[0].show();
             }
         }
     }
