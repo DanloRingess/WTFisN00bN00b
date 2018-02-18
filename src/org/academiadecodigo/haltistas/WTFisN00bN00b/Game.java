@@ -18,6 +18,8 @@ public class Game {
     private int tickCounter;
     private int cycleCounter;
 
+    private int delay;
+
 
     public void start() throws InterruptedException {
 
@@ -40,9 +42,12 @@ public class Game {
 
         tickCounter = 0;                  // number of times while loop runs
 
+        delay = 15;
+
+
         while (true) {
 
-            Thread.sleep(10);
+            Thread.sleep(delay);
 
             if (tickCounter % 165 == 0) {
                 switch (cycleCounter % 10) {
@@ -94,13 +99,12 @@ public class Game {
                     case 9:
                         activeEnemy = enemy[1];
                         activeEnemy.moveBack(activeEnemy.getX());
+                        if (delay > 1) {
+
+                            delay -= 1;
+                        }
                         break;
                 }
-            }
-
-            if (activeEnemy.getX() == activeEnemy.getFinalX()) {
-
-                activeEnemy.moveBack(activeEnemy.getX());
             }
 
             activeEnemy.move();
