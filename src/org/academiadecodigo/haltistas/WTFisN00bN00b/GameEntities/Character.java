@@ -36,7 +36,7 @@ public class Character extends GameEntity implements Collidable {
         this.Y += dirY;
         characterSprite.translate(0, dirY);
 
-        if (Y == 200) {
+        if (Y == 150) {
             fall();
         }
 

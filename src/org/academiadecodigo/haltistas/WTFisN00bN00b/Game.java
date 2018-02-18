@@ -25,6 +25,9 @@ public class Game {
 
         GameCanvas canvas = new GameCanvas();
 
+        scoreboard = new Scoreboard(1300, 30);
+        scoreboard.init();
+
         enemy = new Supernova();
         enemy.show();
 

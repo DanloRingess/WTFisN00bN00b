@@ -7,7 +7,7 @@ public class Supernova extends Enemy {
     private Picture supernovaSprite;
 
     private int initialX = 900;
-    private int initialY = 200;
+    private int initialY = 300;
 
     private int X;
     private int Y;
