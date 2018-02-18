@@ -20,12 +20,11 @@ public class Game {
 
     private int delay;
 
-
-    public void start() throws InterruptedException {
+    public void init() {
 
         GameCanvas canvas = new GameCanvas();
 
-        enemy = new Enemy[] {
+        enemy = new Enemy[]{
                 new Supernova(),
                 new CrocuBot(),
                 new MillionAnts(),
@@ -43,69 +42,15 @@ public class Game {
         tickCounter = 0;                  // number of times while loop runs
 
         delay = 15;
+    }
 
+    public void start() throws InterruptedException {
 
         while (true) {
 
             Thread.sleep(delay);
 
-            if (tickCounter % 165 == 0) {
-                switch (cycleCounter % 10) {
-                    case 0:
-                        activeEnemy = enemy[0];
-                        activeEnemy.moveBack(activeEnemy.getX());
-                        break;
-
-                    case 1:
-                        activeEnemy = enemy[1];
-                        activeEnemy.moveBack(activeEnemy.getX());
-                        break;
-
-                    case 2:
-                        activeEnemy = enemy[2];
-                        activeEnemy.moveBack(activeEnemy.getX());
-                        break;
-
-                    case 3:
-                        activeEnemy = enemy[3];
-                        activeEnemy.moveBack(activeEnemy.getX());
-                        break;
-
-                    case 4:
-                        activeEnemy = enemy[0];
-                        activeEnemy.moveBack(activeEnemy.getX());
-                        break;
-
-                    case 5:
-                        activeEnemy = enemy[1];
-                        activeEnemy.moveBack(activeEnemy.getX());
-                        break;
-
-                    case 6:
-                        activeEnemy = enemy[2];
-                        activeEnemy.moveBack(activeEnemy.getX());
-                        break;
-
-                    case 7:
-                        activeEnemy = enemy[3];
-                        activeEnemy.moveBack(activeEnemy.getX());
-                        break;
-
-                    case 8:
-                        activeEnemy = enemy[0];
-                        activeEnemy.moveBack(activeEnemy.getX());
-                        break;
-
-                    case 9:
-                        activeEnemy = enemy[1];
-                        activeEnemy.moveBack(activeEnemy.getX());
-                        if (delay > 1) {
-
-                            delay -= 1;
-                        }
-                        break;
-                }
-            }
+            checkEnemyCycle();
 
             activeEnemy.move();
 
@@ -118,5 +63,74 @@ public class Game {
             System.out.println(cycleCounter);
         }
     }
+
+    private void checkEnemyCycle() {
+        if (tickCounter % 165 == 0) {
+
+            selectActiveEnemy();
+        }
+    }
+
+    private void selectActiveEnemy() {
+
+        switch (cycleCounter % 10) {
+            case 0:
+                activeEnemy = enemy[0];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 1:
+                activeEnemy = enemy[1];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 2:
+                activeEnemy = enemy[2];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 3:
+                activeEnemy = enemy[3];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 4:
+                activeEnemy = enemy[0];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 5:
+                activeEnemy = enemy[1];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 6:
+                activeEnemy = enemy[2];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 7:
+                activeEnemy = enemy[3];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 8:
+                activeEnemy = enemy[0];
+                activeEnemy.moveBack(activeEnemy.getX());
+                break;
+
+            case 9:
+                activeEnemy = enemy[1];
+                activeEnemy.moveBack(activeEnemy.getX());
+
+                if (delay > 1) {
+
+                    delay -= 1;
+                }
+
+                break;
+        }
+    }
 }
+
 
