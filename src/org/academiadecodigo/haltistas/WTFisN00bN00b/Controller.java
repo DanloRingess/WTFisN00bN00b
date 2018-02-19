@@ -9,6 +9,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class Controller implements KeyboardHandler {
 
     private Character character;
+    private Game game;
 
     public Controller(Character character) {
         this.character = character;
@@ -27,6 +28,11 @@ public class Controller implements KeyboardHandler {
         event.setKey(KeyboardEvent.KEY_DOWN);
         event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         k.addEventListener(event);
+
+        event = new KeyboardEvent();
+        event.setKey(KeyboardEvent.KEY_S);
+        event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        k.addEventListener(event);
     }
 
 
@@ -41,6 +47,14 @@ public class Controller implements KeyboardHandler {
 
             case KeyboardEvent.KEY_DOWN:
                 character.crouch();
+                break;
+
+            case KeyboardEvent.KEY_S:
+                try {
+                    game.start();
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
                 break;
 
         }

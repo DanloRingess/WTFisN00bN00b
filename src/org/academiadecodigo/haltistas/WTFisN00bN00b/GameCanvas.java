@@ -6,7 +6,10 @@ public class GameCanvas {
 
     private Picture background;
 
+
     public GameCanvas() {
+
+
         this.background = new Picture(10,10, "assets/worldenders_cave.jpeg");
         background.draw();
     }

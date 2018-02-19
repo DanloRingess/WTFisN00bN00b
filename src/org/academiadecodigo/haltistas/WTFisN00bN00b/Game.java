@@ -20,6 +20,12 @@ public class Game {
 
     private int delay;
 
+
+
+
+
+
+
     public void init() {
 
         GameCanvas canvas = new GameCanvas();
