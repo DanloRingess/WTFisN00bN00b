@@ -30,13 +30,7 @@ public class Game {
 
         GameCanvas canvas = new GameCanvas();
 
-        enemy = new Enemy[]{
-                new Supernova(),
-                new CrocuBot(),
-                new MillionAnts(),
-                new VinceMaximus(),
-                new AlanRails()
-        };
+        generateEnemies();
 
         n00bn00b = new Character();
         n00bn00b.show();
@@ -68,6 +62,17 @@ public class Game {
             System.out.println(tickCounter);
             System.out.println(cycleCounter);
         }
+    }
+
+    private void generateEnemies() {
+
+        enemy = new Enemy[]{
+                new Supernova(),
+                new CrocuBot(),
+                new MillionAnts(),
+                new VinceMaximus(),
+                new AlanRails()
+        };
     }
 
     private void checkEnemyCycle() {
