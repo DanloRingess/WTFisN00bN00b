@@ -1,4 +1,4 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies;
 
 public enum EnemyType {
 

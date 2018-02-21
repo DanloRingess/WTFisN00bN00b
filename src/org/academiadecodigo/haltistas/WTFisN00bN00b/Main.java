@@ -6,7 +6,14 @@ public class Main {
 
         Game game = new Game();
 
-        game.init();
-        game.start();
+        //game.init();
+        //game.start();
+
+
+        //game.mainMenu();
+
+        game.gameInit();
+
+
     }
 }

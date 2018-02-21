@@ -1,6 +1,6 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities;
 
-import org.academiadecodigo.haltistas.WTFisN00bN00b.Interfaces.Collidable;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.interfaces.Collidable;
 
 public abstract class GameEntity  implements Collidable {
 

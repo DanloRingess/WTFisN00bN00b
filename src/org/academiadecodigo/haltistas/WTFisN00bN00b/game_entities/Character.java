@@ -1,6 +1,6 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities;
 
-import org.academiadecodigo.haltistas.WTFisN00bN00b.Interfaces.Collidable;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.interfaces.Collidable;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Character extends GameEntity implements Collidable {
@@ -37,7 +37,7 @@ public class Character extends GameEntity implements Collidable {
 
         if (Y <= 100) {
             fall();
-            System.out.println(Y);
+
         }
 
         if (Y >= initialY) {
@@ -72,10 +72,6 @@ public class Character extends GameEntity implements Collidable {
     public int getInitialY() {
         return initialY;
     }
-
-
-
-
 
 
     @Override

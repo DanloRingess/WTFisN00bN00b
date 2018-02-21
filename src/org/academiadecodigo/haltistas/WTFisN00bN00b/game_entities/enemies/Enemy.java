@@ -1,7 +1,7 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies;
 
-import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.GameEntity;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.Interfaces.Collidable;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.GameEntity;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.interfaces.Collidable;
 
 public abstract class Enemy extends GameEntity implements Collidable {
 
