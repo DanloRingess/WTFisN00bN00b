@@ -17,7 +17,7 @@ public class Menu {
 
     public Menu() {
         new MenuController();
-        image = new Canvas(10, 10, "assets/n00b.jpg");
+        image = new Canvas(10, 10, "assets/main_menu.png");
         gamePlace = GamePlace.MENU;
     }
 

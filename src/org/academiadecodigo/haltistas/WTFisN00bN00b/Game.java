@@ -57,7 +57,7 @@ public class Game implements MouseHandler{
         gamePlace = GamePlace.MENU;
         gamePlace = menu.play();
 
-        background = new Canvas(10, 10, "assets/worldenders_cave.jpeg");
+        background = new Canvas(10, 10, "assets/background.png");
 
         System.out.println("i'll bite");
         //background.setBackground(10, 10, "assets/worldenders_cave.jpeg");
