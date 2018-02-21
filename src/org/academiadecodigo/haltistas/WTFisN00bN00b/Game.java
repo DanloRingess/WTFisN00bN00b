@@ -192,18 +192,11 @@ public class Game implements MouseHandler{
 
         int Stage = (cycleCounter / 10) + 1;
 
-        // this.text = new Text(1000,300,"score:   " + tickCounter);
-        score.delete();
         score.setText("SCORE:      " + tickCounter / 5);
-        score.draw();
-        //text.grow(100, 100);
         score.setColor(Color.WHITE);
         score.draw();
 
-        stage.delete();
         stage.setText("LEVEL: " + Stage);
-        stage.draw();
-        //text.grow(100, 100);
         stage.setColor(Color.WHITE);
         stage.draw();
 
