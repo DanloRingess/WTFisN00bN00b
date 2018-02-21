@@ -42,11 +42,11 @@ public class MillionAnts extends Enemy {
     @Override
     public void move() {
 
-        antsSprite1.translate(dirX,0);
+        antsSprite1.translate(dirX, 0);
         antsSprite2.translate(dirX, 0);
         this.X += dirX;
 
-        if (this.X % 400 == 0 ) {
+        if (this.X % 400 == 0) {
             antsSprite.delete();
             antsSprite = antsSprite2;
             antsSprite.draw();
@@ -65,7 +65,7 @@ public class MillionAnts extends Enemy {
 
         antsSprite1.translate(initialX - lastX, 0);
         antsSprite2.translate(initialX - lastX, 0);
-        this.X  = initialX;
+        this.X = initialX;
     }
 
     @Override

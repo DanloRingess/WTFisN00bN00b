@@ -42,13 +42,12 @@ public class CrocuBot extends Enemy {
     @Override
     public void move() {
 
-        if (X > finalX) {
-            crocubotSprite1.translate(dirX, 0);
-            crocubotSprite2.translate(dirX, 0);
-            this.X += dirX;
-        }
+        crocubotSprite1.translate(dirX, 0);
+        crocubotSprite2.translate(dirX, 0);
+        this.X += dirX;
 
-         if (this.X % 400 == 0 ) {
+
+        if (this.X % 400 == 0) {
             crocubotSprite.delete();
             crocubotSprite = crocubotSprite2;
             crocubotSprite.draw();

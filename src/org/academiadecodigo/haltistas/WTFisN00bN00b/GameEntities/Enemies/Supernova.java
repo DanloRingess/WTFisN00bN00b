@@ -4,15 +4,16 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Supernova extends Enemy {
 
-    private Picture supernovaSprite1;
-    private Picture supernovaSprite2;
-
+    private Picture supernovaSprite;
 
     private int initialX = 1000;
-    private int initialY = 200;
+    private int initialY = 300;
 
     private int finalX = -700;
-    private int finalY = 200;
+    private int finalY = 300;
+
+    private Picture supernovaSprite1 = new Picture(finalX, finalY, "assets/Supernova.png");
+    private Picture supernovaSprite2 = new Picture(finalX, finalY, "assets/Supernova_2.png");
 
     private int X;
     private int Y;
@@ -21,31 +22,42 @@ public class Supernova extends Enemy {
 
     public Supernova() {
 
-        supernovaSprite1 = new Picture(finalX, finalY, "assets/Supernova.png");
+        supernovaSprite = supernovaSprite1;
 
         this.X = finalX;
         this.Y = finalY;
-        show();
     }
 
     @Override
     public void show() {
 
-        supernovaSprite1.draw();
+        supernovaSprite.draw();
     }
 
     @Override
     public void hide() {
 
-        supernovaSprite1.delete();
+        supernovaSprite.delete();
     }
 
     @Override
     public void move() {
 
-        if (X > finalX) {
-            supernovaSprite1.translate(dirX, 0);
-            this.X += dirX;
+        supernovaSprite1.translate(dirX, 0);
+        supernovaSprite2.translate(dirX, 0);
+        this.X += dirX;
+
+        if (this.X % 400 == 0) {
+            supernovaSprite.delete();
+            supernovaSprite = supernovaSprite2;
+            supernovaSprite.draw();
+            return;
+        }
+
+        if (this.X % 200 == 0) {
+            supernovaSprite.delete();
+            supernovaSprite = supernovaSprite1;
+            supernovaSprite.draw();
         }
     }
 
@@ -53,6 +65,7 @@ public class Supernova extends Enemy {
     public void moveBack(int lastX) {
 
         supernovaSprite1.translate(initialX - lastX, 0);
+        supernovaSprite2.translate(initialX - lastX, 0);
         this.X = initialX;
     }
 
@@ -68,12 +81,12 @@ public class Supernova extends Enemy {
 
     @Override
     public int getWidth() {
-        return supernovaSprite1.getWidth();
+        return supernovaSprite.getWidth();
     }
 
     @Override
     public int getHeight() {
-        return supernovaSprite1.getHeight();
+        return supernovaSprite.getHeight();
     }
 
     @Override
