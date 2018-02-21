@@ -11,7 +11,7 @@ import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
-public class Game implements MouseHandler{
+public class Game implements MouseHandler {
 
     private Mouse m;
 
@@ -99,6 +99,8 @@ public class Game implements MouseHandler{
 
             n00bn00b.move();
 
+            actionWhenCollides();
+
             tickCounter++;
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
 
@@ -126,6 +128,13 @@ public class Game implements MouseHandler{
         if (tickCounter % 165 == 0) {
 
             selectActiveEnemy();
+        }
+    }
+
+    private void actionWhenCollides() {
+        if (collides(n00bn00b, activeEnemy)) {
+            //Action
+            System.exit(0);
         }
     }
 
@@ -204,7 +213,6 @@ public class Game implements MouseHandler{
     }
 
 
-
     @Override
     public void mouseClicked(MouseEvent e) {
         System.out.println(e);
@@ -215,6 +223,10 @@ public class Game implements MouseHandler{
 
         System.out.println(e);
 
+    }
+
+    public static boolean collides(Character n00bn00b, Enemy enemy) {
+        return n00bn00b.collides(enemy);
     }
 }
 

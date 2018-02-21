@@ -2,7 +2,7 @@ package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.interfaces.Collidable;
 
-public abstract class GameEntity  implements Collidable {
+public abstract class GameEntity {
 
     public GameEntity() {
     }
@@ -24,11 +24,11 @@ public abstract class GameEntity  implements Collidable {
 
     public abstract int getHeight();
 
-    @Override
+  /* @Override
     public boolean collides(GameEntity gameEntity) {
         return !(getY() > gameEntity.getY() + gameEntity.getHeight() ||
                 gameEntity.getY() > getY() + getHeight() ||
                 getX() > gameEntity.getX() + gameEntity.getWidth() ||
                 gameEntity.getX() > getX() + getWidth());
-    }
+    }*/
 }
