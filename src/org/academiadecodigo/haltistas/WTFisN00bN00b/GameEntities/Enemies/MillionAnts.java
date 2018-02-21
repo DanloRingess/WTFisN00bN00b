@@ -7,12 +7,12 @@ public class MillionAnts extends Enemy {
     Picture antsSprite;
 
     private int initialX = 1200;
-    private int initialY = 500;
+    private int initialY = 400;
 
     private int finalX = -600;
-    private int finalY = 500;
+    private int finalY = 400;
 
-    Picture antsSprite1 = new Picture(finalX, finalY, "assets/million_ants.png");
+    Picture antsSprite1 = new Picture(finalX, finalY, "assets/Million_ants.png");
     Picture antsSprite2 = new Picture(finalX, finalY, "assets/million_ants_2.png");
 
     private int X;

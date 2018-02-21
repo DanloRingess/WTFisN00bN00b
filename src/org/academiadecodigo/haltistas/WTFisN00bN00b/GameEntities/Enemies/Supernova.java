@@ -4,7 +4,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Supernova extends Enemy {
 
-    private Picture supernovaSprite;
+    private Picture supernovaSprite1;
+    private Picture supernovaSprite2;
+
 
     private int initialX = 1000;
     private int initialY = 200;
@@ -19,7 +21,8 @@ public class Supernova extends Enemy {
 
     public Supernova() {
 
-        supernovaSprite = new Picture(finalX, finalY, "assets/supernova.png");
+        supernovaSprite1 = new Picture(finalX, finalY, "assets/Supernova.png");
+
         this.X = finalX;
         this.Y = finalY;
         show();
@@ -28,20 +31,20 @@ public class Supernova extends Enemy {
     @Override
     public void show() {
 
-        supernovaSprite.draw();
+        supernovaSprite1.draw();
     }
 
     @Override
     public void hide() {
 
-        supernovaSprite.delete();
+        supernovaSprite1.delete();
     }
 
     @Override
     public void move() {
 
         if (X > finalX) {
-            supernovaSprite.translate(dirX, 0);
+            supernovaSprite1.translate(dirX, 0);
             this.X += dirX;
         }
     }
@@ -49,7 +52,7 @@ public class Supernova extends Enemy {
     @Override
     public void moveBack(int lastX) {
 
-        supernovaSprite.translate(initialX - lastX, 0);
+        supernovaSprite1.translate(initialX - lastX, 0);
         this.X = initialX;
     }
 
@@ -65,12 +68,12 @@ public class Supernova extends Enemy {
 
     @Override
     public int getWidth() {
-        return supernovaSprite.getWidth();
+        return supernovaSprite1.getWidth();
     }
 
     @Override
     public int getHeight() {
-        return supernovaSprite.getHeight();
+        return supernovaSprite1.getHeight();
     }
 
     @Override
