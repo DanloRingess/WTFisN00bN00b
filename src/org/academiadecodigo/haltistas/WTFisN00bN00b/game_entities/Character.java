@@ -72,12 +72,6 @@ public class Character extends GameEntity implements Collidable {
         characterSprite.draw();
     }
 
-    @Override
-    public void hide() {
-
-        characterSprite.delete();
-    }
-
     public int getX() {
         return X;
     }

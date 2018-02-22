@@ -35,12 +35,6 @@ public class Supernova extends Enemy {
     }
 
     @Override
-    public void hide() {
-
-        supernovaSprite.delete();
-    }
-
-    @Override
     public void move() {
 
         supernovaSprite1.translate(dirX, 0);

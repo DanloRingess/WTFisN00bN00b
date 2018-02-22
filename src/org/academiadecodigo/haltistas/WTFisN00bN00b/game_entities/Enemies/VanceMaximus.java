@@ -36,12 +36,6 @@ public class VanceMaximus extends Enemy {
     }
 
     @Override
-    public void hide() {
-
-        vinceSprite.delete();
-    }
-
-    @Override
     public void move() {
 
             vinceSprite1.translate(dirX, 0);

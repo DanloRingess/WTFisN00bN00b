@@ -31,11 +31,6 @@ public class AlanRails extends Enemy {
     }
 
     @Override
-    public void hide() {
-        alanSprite.delete();
-    }
-
-    @Override
     public void move() {
 
         alanSprite.translate(dirX, 0);

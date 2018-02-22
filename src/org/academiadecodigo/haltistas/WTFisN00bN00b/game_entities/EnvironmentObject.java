@@ -11,11 +11,6 @@ public class EnvironmentObject extends GameEntity {
     }
 
     @Override
-    public void hide() {
-
-    }
-
-    @Override
     public void move() {
 
     }

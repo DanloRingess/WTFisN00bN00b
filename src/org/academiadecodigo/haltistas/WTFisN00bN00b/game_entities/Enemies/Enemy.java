@@ -5,12 +5,6 @@ import org.academiadecodigo.haltistas.WTFisN00bN00b.interfaces.Collidable;
 
 public abstract class Enemy extends GameEntity implements Collidable {
 
-    private int initialX;
-    private int initialY;
-
-    private int finalX;
-    private int finalY;
-
     abstract public void moveBack(int lastX);
 
     public boolean collides(Collidable gameEntity) {
