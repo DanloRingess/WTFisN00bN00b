@@ -38,7 +38,7 @@ public class Game {
         controller.keyboardInitGame();
 
         if (gameMode == GameMode.QUIT) {
-            System.exit(0);
+            return;
         }
 
         if (gameMode == GameMode.START) {
@@ -57,16 +57,16 @@ public class Game {
         menu.showBackground();
         generateEnemies();
         n00bn00b.show();
-        nonCollidableObjects();
         tickCounter = 0;                  // number of times while loop runs
-        delay = 1;
+        delay = 15;
 
         while (!gameOver) {
             Thread.sleep(delay);
             checkEnemyCycle();
             activeEnemy.move();
+            environmentObject.move();
             n00bn00b.move();
-            //actionWhenCollides();
+            actionWhenCollides();
             tickCounter++;
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
             scoreboard();
@@ -88,6 +88,7 @@ public class Game {
     private void checkEnemyCycle() {
         if (tickCounter % 165 == 0) {
             selectActiveEnemy();
+            selectActiveDecorations();
         }
     }
 
@@ -99,10 +100,10 @@ public class Game {
         }
     }
 
-    private void nonCollidableObjects(){
-        environmentObject.getEnvironmentObject();
-    }
+    private void selectActiveDecorations() {
 
+        environmentObject.selectActiveNoCollibleObject();
+    }
 
 
     private void selectActiveEnemy() {

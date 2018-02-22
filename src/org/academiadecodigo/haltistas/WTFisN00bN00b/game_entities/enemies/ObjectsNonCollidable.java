@@ -4,6 +4,5 @@ public enum ObjectsNonCollidable {
     TV,
     BROOM,
     WINDOW,
-    FLOOR
 
 }
