@@ -4,22 +4,20 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 
 public class Menu {
-
 
     private GamePlace gamePlace;
     private Canvas image;
 
-
-
-
-    public Menu() {
+    public Menu(Canvas image) {
         new MenuController();
-        image = new Canvas(10, 10, "assets/main_menu.png");
-        gamePlace = GamePlace.MENU;
+
+        this.image = image;
+        this.gamePlace = GamePlace.MENU;
     }
+
 
     public GamePlace play() throws InterruptedException {
 

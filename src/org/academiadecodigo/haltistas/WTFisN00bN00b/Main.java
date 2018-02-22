@@ -2,17 +2,16 @@ package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args) throws InterruptedException {
 
         Game game = new Game();
 
-        //game.init();
-        //game.start();
 
-
-        //game.mainMenu();
-
-        game.gameInit();
+        try {
+            game.gameInit();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }

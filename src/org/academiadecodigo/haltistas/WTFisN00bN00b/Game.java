@@ -4,17 +4,11 @@ import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
-public class Game implements MouseHandler {
 
-    private Mouse m;
-
+public class Game {
 
     private Canvas background;
 
@@ -32,39 +26,25 @@ public class Game implements MouseHandler {
 
     private int tickCounter;
     private int cycleCounter;
+    private boolean gameOver;
 
     private int delay;
 
     public Game() {
-        menu = new Menu();
         this.score = new Text(1150, 61, "");
         this.score.grow(20, 20);
         this.stage = new Text(230, 64, "");
         this.stage.grow(15, 22);
 
-        Mouse m = new Mouse(this);
-        m.addEventListener(MouseEventType.MOUSE_CLICKED);
-        m.addEventListener(MouseEventType.MOUSE_MOVED);
-    }
-
-    public void mainMenu() {
-
-        background = new Canvas(10, 10, "assets/n00b.jpg");
-
-
     }
 
     public void gameInit() throws InterruptedException {
 
-        gamePlace = GamePlace.MENU;
+        menu = new Menu(new Canvas(10, 10, "assets/main_menu.png"));
+
         gamePlace = menu.play();
 
-        background = new Canvas(10, 10, "assets/background.png");
-
-        generateEnemies();
-
         n00bn00b = new Character();
-        n00bn00b.show();
 
         controller = new Controller(n00bn00b, this);
         controller.keyboardInitGame();
@@ -72,23 +52,37 @@ public class Game implements MouseHandler {
         if (gamePlace == GamePlace.QUIT) {
             System.exit(0);
         }
-        if (gamePlace == GamePlace.ENDGAME) {
-            gameInit();
-        }
 
         if (gamePlace == GamePlace.START) {
             start();
         }
-
-
     }
+
+    public void endGame() throws InterruptedException {
+
+        //menu = new Menu(new Canvas(10, 10, "assets/worldenders_cave.jpeg"));
+
+        if (gamePlace == GamePlace.QUIT) {
+            System.exit(0);
+        }
+
+        if (gamePlace == GamePlace.START) {
+            gameInit();
+        }
+
+        gameOver=false;
+    }
+
 
     private void start() throws InterruptedException {
 
+        background = new Canvas(10, 10, "assets/background.png");
+        generateEnemies();
+        n00bn00b.show();
         tickCounter = 0;                  // number of times while loop runs
         delay = 15;
 
-        while (true) {
+        while (!gameOver) {
 
             Thread.sleep(delay);
 
@@ -98,7 +92,7 @@ public class Game implements MouseHandler {
 
             n00bn00b.move();
 
-            //actionWhenCollides();
+            actionWhenCollides();
 
             tickCounter++;
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
@@ -128,10 +122,12 @@ public class Game implements MouseHandler {
         }
     }
 
-    private void actionWhenCollides() {
+    private void actionWhenCollides() throws InterruptedException {
         if (collides(n00bn00b, activeEnemy)) {
             //Action TODO
-            System.exit(0);
+            gameOver = true;
+            System.out.println(tickCounter);
+            endGame();
         }
     }
 
@@ -206,25 +202,12 @@ public class Game implements MouseHandler {
         stage.setColor(Color.WHITE);
         stage.draw();
 
-
-    }
-
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        System.out.println(e);
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-
-        System.out.println(e);
-
     }
 
     public static boolean collides(Character n00bn00b, Enemy enemy) {
         return n00bn00b.collides(enemy);
     }
+
 }
 
 
