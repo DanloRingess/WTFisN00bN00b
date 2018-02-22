@@ -79,7 +79,7 @@ public class Game {
         generateEnemies();
         n00bn00b.show();
         tickCounter = 0;                  // number of times while loop runs
-        delay = 15;
+        delay = 16;
 
         while (!gameOver) {
 
@@ -91,7 +91,7 @@ public class Game {
 
             n00bn00b.move();
 
-            actionWhenCollides();
+            //§actionWhenCollides();
 
             tickCounter++;
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
@@ -154,12 +154,12 @@ public class Game {
                 break;
 
             case 4:
-                activeEnemy = enemy[0];
+                activeEnemy = enemy[4];
                 activeEnemy.moveBack(activeEnemy.getX());
                 break;
 
             case 5:
-                activeEnemy = enemy[1];
+                activeEnemy = enemy[3];
                 activeEnemy.moveBack(activeEnemy.getX());
                 break;
 
@@ -182,7 +182,7 @@ public class Game {
                 activeEnemy = enemy[1];
                 activeEnemy.moveBack(activeEnemy.getX());
 
-                if (delay > 1) {
+                if (delay > 4) {
 
                     delay -= 1;
                 }

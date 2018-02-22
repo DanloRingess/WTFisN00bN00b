@@ -6,18 +6,22 @@ public class AlanRails extends Enemy {
 
 
     private int initialX = 1000;
-    private int initialY = 400;
 
     private int finalX = -600;
     private int finalY = 400;
 
-    private Picture alanSprite = new Picture(10,10, "assets/Alan.png");
+    private Picture alanSprite = new Picture(finalX,finalY, "assets/Alan.png");
 
     private int X;
     private int Y;
 
     private int dirX = -10;
 
+    public AlanRails()  {
+        this.X = finalX;
+        this.Y = finalY;
+        alanSprite.draw();
+    }
 
     @Override
     public void moveBack(int lastX) {
