@@ -3,15 +3,10 @@ package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.GameEntity;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.interfaces.Collidable;
 
-public abstract class Enemy extends GameEntity {
+public abstract class Enemy extends GameEntity implements Collidable {
 
     abstract public void moveBack(int lastX);
 
-<<<<<<< HEAD:src/org/academiadecodigo/haltistas/WTFisN00bN00b/game_entities/enemies/Enemy.java
-    abstract public int getFinalX();
-
-
-=======
     public boolean collides(Collidable gameEntity) {
         //the padding creates a sub rectangle that's smaller in percentage,
         //padding = 0 is the original rectangle
@@ -64,5 +59,4 @@ public abstract class Enemy extends GameEntity {
 
 
     }
->>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3:src/org/academiadecodigo/haltistas/WTFisN00bN00b/game_entities/Enemies/Enemy.java
 }

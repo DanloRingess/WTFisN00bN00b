@@ -4,23 +4,11 @@ import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
-<<<<<<< HEAD
-=======
-
->>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
-
 
 public class Game {
 
-<<<<<<< HEAD
-    private Menu image;
-    private GamePlace gamePlace;
-=======
-    private Canvas background;
-
     private Menu menu;
     private GameMode gameMode;
->>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
     private Text score, stage;
     private Enemy[] enemy;
     private Enemy activeEnemy;
@@ -32,69 +20,29 @@ public class Game {
 
     private int delay;
 
-    public Game() {
-<<<<<<< HEAD
-=======
-        this.score = new Text(1150, 61, "");
-        this.score.grow(20, 20);
-        this.stage = new Text(230, 64, "");
-        this.stage.grow(15, 22);
 
+    public Game() {
+        this.menu = new Menu();
+        this.n00bn00b = new Character();
+        this.controller = new Controller(n00bn00b, this);
     }
 
-    public void gameInit() throws InterruptedException {
 
-        menu = new Menu(new Canvas(10, 10, "assets/main_menu.png"));
+    public void gameInit() throws InterruptedException {
 
         gameMode = menu.play();
->>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
 
-        this.image = new Menu();
-        n00bn00b = new Character();
-        controller = new Controller(n00bn00b, this);
         controller.keyboardInitGame();
-    }
 
-    public void gameInit() throws InterruptedException {
-
-<<<<<<< HEAD
-        gamePlace = image.play();
-        if (gamePlace == GamePlace.QUIT) {
-            System.exit(0);
-        }
-        if (gamePlace == GamePlace.START) {
-=======
         if (gameMode == GameMode.QUIT) {
             System.exit(0);
         }
 
         if (gameMode == GameMode.START) {
->>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
             start();
         }
     }
 
-    public void endGame() throws InterruptedException {
-
-        image.showGameOver();
-
-<<<<<<< HEAD
-        while (gameOver) {
-
-            if (image.getGamePlace() == GamePlace.ENDGAME) {
-                gameOver = false;
-                gameInit();
-            }
-=======
-        if (gameMode == GameMode.QUIT) {
-            System.exit(0);
-        }
-
-        if (gameMode == GameMode.START) {
-            gameInit();
->>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
-        }
-    }
 
     private void start() throws InterruptedException {
 
@@ -103,7 +51,7 @@ public class Game {
         this.stage = new Text(230, 64, "");
         this.stage.grow(15, 22);
 
-        image.showBackground();
+        menu.showBackground();
         generateEnemies();
         n00bn00b.show();
         tickCounter = 0;                  // number of times while loop runs
@@ -139,13 +87,11 @@ public class Game {
         }
     }
 
-    private void actionWhenCollides() throws InterruptedException {
-        if (collides(n00bn00b, activeEnemy)) {
-            //Action TODO
-            gameOver = true;
-            System.out.println(tickCounter);
-            System.exit(0);
+    private void actionWhenCollides() {
 
+        if (collides(n00bn00b, activeEnemy)) {
+            gameOver = true;
+            System.exit(0);
         }
     }
     private void selectActiveEnemy() {
