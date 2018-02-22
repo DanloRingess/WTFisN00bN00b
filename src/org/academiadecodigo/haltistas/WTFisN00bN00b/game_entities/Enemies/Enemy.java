@@ -1,4 +1,4 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Enemies;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.GameEntity;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.interfaces.Collidable;
