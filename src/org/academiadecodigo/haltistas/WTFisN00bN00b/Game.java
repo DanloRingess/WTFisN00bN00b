@@ -36,8 +36,10 @@ public class Game implements MouseHandler {
 
     public Game() {
         menu = new Menu();
-        this.score = new Text(1100, 30, "");
-        this.stage = new Text(100, 30, "");
+        this.score = new Text(1150, 61, "");
+        this.score.grow(20, 20);
+        this.stage = new Text(230, 64, "");
+        this.stage.grow(15, 22);
 
         Mouse m = new Mouse(this);
         m.addEventListener(MouseEventType.MOUSE_CLICKED);
@@ -58,9 +60,6 @@ public class Game implements MouseHandler {
 
         background = new Canvas(10, 10, "assets/background.png");
 
-        System.out.println("i'll bite");
-        //background.setBackground(10, 10, "assets/worldenders_cave.jpeg");
-
         generateEnemies();
 
         n00bn00b = new Character();
@@ -79,7 +78,7 @@ public class Game implements MouseHandler {
         if (gamePlace == GamePlace.START) {
             start();
         }
-        //start();
+
 
     }
 
@@ -98,15 +97,13 @@ public class Game implements MouseHandler {
 
             n00bn00b.move();
 
-            actionWhenCollides();
+            //actionWhenCollides();
 
             tickCounter++;
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
 
             scoreboard();
 
-            //System.out.println(tickCounter);
-            //System.out.println(cycleCounter);
         }
     }
 
@@ -132,7 +129,7 @@ public class Game implements MouseHandler {
 
     private void actionWhenCollides() {
         if (collides(n00bn00b, activeEnemy)) {
-            //Action
+            //Action TODO
             System.exit(0);
         }
     }
@@ -198,13 +195,13 @@ public class Game implements MouseHandler {
 
     public void scoreboard() {
 
-        int Stage = (cycleCounter / 10) + 1;
+        int level = (cycleCounter / 10) + 1;
 
-        score.setText("SCORE:      " + tickCounter / 5);
+        score.setText("" + tickCounter / 5);
         score.setColor(Color.WHITE);
         score.draw();
 
-        stage.setText("LEVEL: " + Stage);
+        stage.setText("" + level);
         stage.setColor(Color.WHITE);
         stage.draw();
 
