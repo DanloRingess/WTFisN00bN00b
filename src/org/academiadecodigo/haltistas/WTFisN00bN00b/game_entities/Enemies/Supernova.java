@@ -1,4 +1,4 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Enemies;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -7,10 +7,13 @@ public class Supernova extends Enemy {
     private Picture supernovaSprite;
 
     private int initialX = 1000;
-    private int initialY = 200;
+    private int initialY = 300;
 
     private int finalX = -700;
-    private int finalY = 200;
+    private int finalY = 300;
+
+    private Picture supernovaSprite1 = new Picture(finalX, finalY, "assets/Supernova.png");
+    private Picture supernovaSprite2 = new Picture(finalX, finalY, "assets/Supernova_2.png");
 
     private int X;
     private int Y;
@@ -19,10 +22,10 @@ public class Supernova extends Enemy {
 
     public Supernova() {
 
-        supernovaSprite = new Picture(finalX, finalY, "assets/supernova.png");
+        supernovaSprite = supernovaSprite1;
+
         this.X = finalX;
         this.Y = finalY;
-        show();
     }
 
     @Override
@@ -40,16 +43,29 @@ public class Supernova extends Enemy {
     @Override
     public void move() {
 
-        if (X > finalX) {
-            supernovaSprite.translate(dirX, 0);
-            this.X += dirX;
+        supernovaSprite1.translate(dirX, 0);
+        supernovaSprite2.translate(dirX, 0);
+        this.X += dirX;
+
+        if (this.X % 400 == 0) {
+            supernovaSprite.delete();
+            supernovaSprite = supernovaSprite2;
+            supernovaSprite.draw();
+            return;
+        }
+
+        if (this.X % 200 == 0) {
+            supernovaSprite.delete();
+            supernovaSprite = supernovaSprite1;
+            supernovaSprite.draw();
         }
     }
 
     @Override
     public void moveBack(int lastX) {
 
-        supernovaSprite.translate(initialX - lastX, 0);
+        supernovaSprite1.translate(initialX - lastX, 0);
+        supernovaSprite2.translate(initialX - lastX, 0);
         this.X = initialX;
     }
 

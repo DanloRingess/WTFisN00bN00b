@@ -1,7 +1,7 @@
 package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Enemies.*;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
@@ -110,7 +110,7 @@ public class Game {
                 new Supernova(),
                 new CrocuBot(),
                 new MillionAnts(),
-                new VinceMaximus(),
+                new VanceMaximus(),
                 new AlanRails()
         };
     }
