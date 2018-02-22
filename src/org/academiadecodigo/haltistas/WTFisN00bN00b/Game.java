@@ -1,6 +1,7 @@
 package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.EnvironmentObject;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -17,6 +18,7 @@ public class Game {
     private int tickCounter;
     private int cycleCounter;
     private boolean gameOver;
+    private EnvironmentObject environmentObject;
 
     private int delay;
 
@@ -25,6 +27,7 @@ public class Game {
         this.menu = new Menu();
         this.n00bn00b = new Character();
         this.controller = new Controller(n00bn00b, this);
+        this.environmentObject = new EnvironmentObject();
     }
 
 
@@ -54,15 +57,16 @@ public class Game {
         menu.showBackground();
         generateEnemies();
         n00bn00b.show();
+        nonCollidableObjects();
         tickCounter = 0;                  // number of times while loop runs
-        delay = 15;
+        delay = 1;
 
         while (!gameOver) {
             Thread.sleep(delay);
             checkEnemyCycle();
             activeEnemy.move();
             n00bn00b.move();
-            actionWhenCollides();
+            //actionWhenCollides();
             tickCounter++;
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
             scoreboard();
@@ -94,6 +98,13 @@ public class Game {
             System.exit(0);
         }
     }
+
+    private void nonCollidableObjects(){
+        environmentObject.getEnvironmentObject();
+    }
+
+
+
     private void selectActiveEnemy() {
 
         switch (cycleCounter % 10) {

@@ -94,7 +94,7 @@ public class Character extends GameEntity implements Collidable {
         //padding = 0 is the original rectangle
         // padding = 1 is a rectangle of area 0.
 
-        double padding = .35;
+        double padding = .3;
 
 
         //calculation of the minimum value of x of this class
