@@ -6,26 +6,20 @@ public class VanceMaximus extends Enemy {
 
     private Picture vinceSprite;
 
-    private int initialX = 900;
+    private final int initialX = 900;
 
-    private int finalX = -700;
-    private int finalY = 320;
+    private final int finalY = 320;
 
-    private Picture vinceSprite1 = new Picture(finalX, finalY, "assets/Vance_Maximus.png");
-    private Picture vinceSprite2 = new Picture(finalX, finalY, "assets/Vance_Maximus_2.png");
+    private Picture vinceSprite1 = new Picture(FINALX, finalY, "assets/Vance_Maximus.png");
+    private Picture vinceSprite2 = new Picture(FINALX, finalY, "assets/Vance_Maximus_2.png");
 
 
     private int X;
-    private int Y;
-
-    private int dirX = -10;
-
 
     public VanceMaximus() {
 
         vinceSprite = vinceSprite1;
-        this.X = finalX;
-        this.Y = finalY;
+        this.X = FINALX;
     }
 
     @Override
@@ -37,9 +31,9 @@ public class VanceMaximus extends Enemy {
     @Override
     public void move() {
 
-            vinceSprite1.translate(dirX, 0);
-            vinceSprite2.translate(dirX, 0);
-            this.X += dirX;
+            vinceSprite1.translate(SPEED, 0);
+            vinceSprite2.translate(SPEED, 0);
+            this.X += SPEED;
 
         if (this.X % 400 == 0) {
             vinceSprite.delete();
@@ -70,7 +64,7 @@ public class VanceMaximus extends Enemy {
 
     @Override
     public int getY() {
-        return Y;
+        return finalY;
     }
 
     @Override

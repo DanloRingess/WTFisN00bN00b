@@ -6,26 +6,22 @@ public class MillionAnts extends Enemy {
 
     Picture antsSprite;
 
-    private int initialX = 1100;
+    private final int initialX = 1100;
 
-    private int finalX = -600;
-    private int finalY = 410;
+    private final int finalY = 410;
 
-    Picture antsSprite1 = new Picture(finalX, finalY, "assets/Million_ants.png");
-    Picture antsSprite2 = new Picture(finalX, finalY, "assets/Million_ants_2.png");
+    private Picture antsSprite1 = new Picture(FINALX, finalY, "assets/Million_ants.png");
+    private Picture antsSprite2 = new Picture(FINALX, finalY, "assets/Million_ants_2.png");
 
     private boolean spriteState;
 
     private int X;
-    private int Y;
-
-    private int dirX = -10;
 
     public MillionAnts() {
 
         antsSprite = antsSprite1;
         spriteState = false;
-        this.X = finalX;
+        this.X = FINALX;
     }
 
     @Override
@@ -37,9 +33,9 @@ public class MillionAnts extends Enemy {
     @Override
     public void move() {
 
-        antsSprite1.translate(dirX, 0);
-        antsSprite2.translate(dirX, 0);
-        this.X += dirX;
+        antsSprite1.translate(SPEED, 0);
+        antsSprite2.translate(SPEED, 0);
+        this.X += SPEED;
 
         if (this.X % 200 == 0) {
             changeSprite();
@@ -79,7 +75,7 @@ public class MillionAnts extends Enemy {
 
     @Override
     public int getY() {
-        return Y;
+        return finalY;
     }
 
     @Override

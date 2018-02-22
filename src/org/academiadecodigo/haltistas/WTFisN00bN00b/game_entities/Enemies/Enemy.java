@@ -5,6 +5,10 @@ import org.academiadecodigo.haltistas.WTFisN00bN00b.interfaces.Collidable;
 
 public abstract class Enemy extends GameEntity implements Collidable {
 
+    protected static int SPEED = -10;
+
+    protected static int FINALX = -700;
+
     abstract public void moveBack(int lastX);
 
     public boolean collides(Collidable gameEntity) {
