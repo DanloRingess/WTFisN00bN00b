@@ -15,20 +15,16 @@ public class VanceMaximus extends Enemy {
     private Picture vinceSprite1 = new Picture(finalX, finalY, "assets/Vance_Maximus.png");
     private Picture vinceSprite2 = new Picture(finalX, finalY, "assets/Vance_Maximus_2.png");
 
-    private boolean spriteState;
 
     private int X;
     private int Y;
 
     private int dirX = -10;
-    private int dirY;
 
-    private boolean rising = false;
 
     public VanceMaximus() {
 
         vinceSprite = vinceSprite1;
-        spriteState = false;
         this.X = finalX;
         this.Y = finalY;
     }
@@ -48,66 +44,29 @@ public class VanceMaximus extends Enemy {
     @Override
     public void move() {
 
-        if (this.X % 200 == 0) {
-            changeSprite();
-        }
+            vinceSprite1.translate(dirX, 0);
+            vinceSprite2.translate(dirX, 0);
+            this.X += dirX;
 
-        if (X > finalX) {
-            if (Y < 251 && !rising) {
-
-                dirY = 5;
-
-                vinceSprite1.translate(dirX, dirY);
-                vinceSprite2.translate(dirX, dirY);
-
-
-                this.X += dirX;
-                this.Y += dirY;
-
-                if (Y == 250) {
-                    rising = true;
-                }
-            }
-
-            if (Y > 100 && rising) {
-
-                dirY = -5;
-
-                vinceSprite1.translate(dirX, dirY);
-                vinceSprite2.translate(dirX, dirY);
-
-                this.X += dirX;
-                this.Y += dirY;
-
-                if (Y == 100) {
-                    rising = false;
-                }
-            }
-        }
-    }
-
-    private void changeSprite() {
-
-        if (spriteState) {
+        if (this.X % 400 == 0) {
             vinceSprite.delete();
             vinceSprite = vinceSprite2;
             vinceSprite.draw();
-
-            spriteState = false;
             return;
         }
 
-        vinceSprite.delete();
-        vinceSprite = vinceSprite1;
-        vinceSprite.draw();
-
-        spriteState = true;
+        if (this.X % 200 == 0) {
+            vinceSprite.delete();
+            vinceSprite = vinceSprite1;
+            vinceSprite.draw();
+        }
     }
 
     @Override
     public void moveBack(int lastX) {
 
-        vinceSprite.translate(initialX - lastX, 0);
+        vinceSprite1.translate(initialX - lastX, 0);
+        vinceSprite2.translate(initialX - lastX, 0);
         this.X = initialX;
     }
 
