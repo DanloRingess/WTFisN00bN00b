@@ -131,8 +131,4 @@ public class VanceMaximus extends Enemy {
         return vinceSprite.getHeight();
     }
 
-    @Override
-    public int getFinalX() {
-        return finalX;
-    }
 }

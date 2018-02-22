@@ -89,9 +89,5 @@ public class Supernova extends Enemy {
         return supernovaSprite.getHeight();
     }
 
-    @Override
-    public int getFinalX() {
-        return finalX;
-    }
 }
 

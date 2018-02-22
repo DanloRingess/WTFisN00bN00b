@@ -13,12 +13,7 @@ public abstract class Enemy extends GameEntity implements Collidable {
 
     abstract public void moveBack(int lastX);
 
-    abstract public int getFinalX();
-
-
-
-    @Override
-    public boolean collides(GameEntity gameEntity) {
+    public boolean collides(Collidable gameEntity) {
         //the padding creates a sub rectangle that's smaller in percentage,
         //padding = 0 is the original rectangle
         // padding = 1 is a rectangle of area 0.

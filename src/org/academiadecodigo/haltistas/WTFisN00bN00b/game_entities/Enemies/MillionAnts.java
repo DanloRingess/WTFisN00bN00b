@@ -100,8 +100,4 @@ public class MillionAnts extends Enemy {
         return antsSprite.getHeight();
     }
 
-    @Override
-    public int getFinalX() {
-        return finalX;
-    }
 }

@@ -12,7 +12,7 @@ public class Game {
     private Canvas background;
 
     private Menu menu;
-    private GamePlace gamePlace;
+    private GameMode gameMode;
     private Text score, stage;
 
     private Enemy[] enemy;
@@ -41,18 +41,18 @@ public class Game {
 
         menu = new Menu(new Canvas(10, 10, "assets/main_menu.png"));
 
-        gamePlace = menu.play();
+        gameMode = menu.play();
 
         n00bn00b = new Character();
 
         controller = new Controller(n00bn00b, this);
         controller.keyboardInitGame();
 
-        if (gamePlace == GamePlace.QUIT) {
+        if (gameMode == GameMode.QUIT) {
             System.exit(0);
         }
 
-        if (gamePlace == GamePlace.START) {
+        if (gameMode == GameMode.START) {
             start();
         }
     }
@@ -61,11 +61,11 @@ public class Game {
 
         //menu = new Menu(new Canvas(10, 10, "assets/worldenders_cave.jpeg"));
 
-        if (gamePlace == GamePlace.QUIT) {
+        if (gameMode == GameMode.QUIT) {
             System.exit(0);
         }
 
-        if (gamePlace == GamePlace.START) {
+        if (gameMode == GameMode.START) {
             gameInit();
         }
 

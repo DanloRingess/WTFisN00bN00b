@@ -8,27 +8,27 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Menu {
 
-    private GamePlace gamePlace;
+    private GameMode gameMode;
     private Canvas image;
 
     public Menu(Canvas image) {
         new MenuController();
 
         this.image = image;
-        this.gamePlace = GamePlace.MENU;
+        this.gameMode = GameMode.MENU;
     }
 
 
-    public GamePlace play() throws InterruptedException {
+    public GameMode play() throws InterruptedException {
 
         image.show();
 
-        while (gamePlace == GamePlace.MENU) {
+        while (gameMode == GameMode.MENU) {
             Thread.sleep(50);
         }
 
         image.hide();
-        return gamePlace;
+        return gameMode;
     }
 
 
@@ -52,24 +52,17 @@ public class Menu {
             Quit.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             k.addEventListener(Quit);
 
-            KeyboardEvent newGame = new KeyboardEvent();
-            newGame.setKey(KeyboardEvent.KEY_N);
-            newGame.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-            k.addEventListener(newGame);
-        }
+       }
 
         @Override
         public void keyPressed(KeyboardEvent e) {
 
             switch (e.getKey()) {
                 case KeyboardEvent.KEY_S:
-                    gamePlace = GamePlace.START;
+                    gameMode = GameMode.START;
                     break;
-                case KeyboardEvent.KEY_N:
-                    gamePlace = GamePlace.ENDGAME;
-                    break;
-                case KeyboardEvent.KEY_X:
-                    gamePlace = GamePlace.QUIT;
+               case KeyboardEvent.KEY_X:
+                    gameMode = GameMode.QUIT;
                     break;
                 default:
                     System.err.println("JVM isn't working");

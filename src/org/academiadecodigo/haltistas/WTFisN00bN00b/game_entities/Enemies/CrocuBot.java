@@ -90,8 +90,4 @@ public class CrocuBot extends Enemy {
         return crocubotSprite.getHeight();
     }
 
-    @Override
-    public int getFinalX() {
-        return finalX;
-    }
 }
