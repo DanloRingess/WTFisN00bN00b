@@ -34,12 +34,6 @@ public class CrocuBot extends Enemy {
     }
 
     @Override
-    public void hide() {
-
-        crocubotSprite.delete();
-    }
-
-    @Override
     public void move() {
 
         crocubotSprite1.translate(dirX, 0);

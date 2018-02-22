@@ -37,12 +37,6 @@ public class MillionAnts extends Enemy {
     }
 
     @Override
-    public void hide() {
-
-        antsSprite.delete();
-    }
-
-    @Override
     public void move() {
 
         antsSprite1.translate(dirX, 0);
