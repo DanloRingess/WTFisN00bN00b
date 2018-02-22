@@ -1,14 +1,13 @@
 package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Enemies.*;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.mouse.Mouse;
 import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
 import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
 import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
 public class Game implements MouseHandler {

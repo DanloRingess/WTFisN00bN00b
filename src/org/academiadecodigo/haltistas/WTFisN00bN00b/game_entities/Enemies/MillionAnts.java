@@ -1,4 +1,4 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Enemies;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
