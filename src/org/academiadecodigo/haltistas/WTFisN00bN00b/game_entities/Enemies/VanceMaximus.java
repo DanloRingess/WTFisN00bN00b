@@ -6,11 +6,10 @@ public class VanceMaximus extends Enemy {
 
     private Picture vinceSprite;
 
-    private int initialX = 1000;
-    private int initialY = 200;
+    private int initialX = 900;
 
     private int finalX = -700;
-    private int finalY = 200;
+    private int finalY = 320;
 
     private Picture vinceSprite1 = new Picture(finalX, finalY, "assets/Vance_Maximus.png");
     private Picture vinceSprite2 = new Picture(finalX, finalY, "assets/Vance_Maximus_2.png");

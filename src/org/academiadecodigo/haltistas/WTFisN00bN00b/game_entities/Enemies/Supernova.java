@@ -6,11 +6,10 @@ public class Supernova extends Enemy {
 
     private Picture supernovaSprite;
 
-    private int initialX = 1000;
-    private int initialY = 300;
+    private int initialX = 1050;
 
     private int finalX = -700;
-    private int finalY = 300;
+    private int finalY = 400;
 
     private Picture supernovaSprite1 = new Picture(finalX, finalY, "assets/Supernova.png");
     private Picture supernovaSprite2 = new Picture(finalX, finalY, "assets/Supernova_2.png");

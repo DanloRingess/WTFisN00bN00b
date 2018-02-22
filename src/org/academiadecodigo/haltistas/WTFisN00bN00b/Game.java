@@ -91,7 +91,7 @@ public class Game {
 
             n00bn00b.move();
 
-            //§actionWhenCollides();
+            actionWhenCollides();
 
             tickCounter++;
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)

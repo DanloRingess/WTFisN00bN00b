@@ -7,10 +7,9 @@ public class CrocuBot extends Enemy {
     private Picture crocubotSprite;
 
     private int initialX = 1000;
-    private int initialY = 400;
 
     private int finalX = -600;
-    private int finalY = 400;
+    private int finalY = 410;
 
     private Picture crocubotSprite1 = new Picture(finalX, finalY, "assets/Crocubot.png");
     private Picture crocubotSprite2 = new Picture(finalX, finalY, "assets/Crocubot_2.png");

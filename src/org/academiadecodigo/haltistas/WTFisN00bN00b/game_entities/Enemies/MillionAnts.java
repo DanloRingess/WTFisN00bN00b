@@ -7,10 +7,9 @@ public class MillionAnts extends Enemy {
     Picture antsSprite;
 
     private int initialX = 1100;
-    private int initialY = 400;
 
     private int finalX = -600;
-    private int finalY = 400;
+    private int finalY = 410;
 
     Picture antsSprite1 = new Picture(finalX, finalY, "assets/Million_ants.png");
     Picture antsSprite2 = new Picture(finalX, finalY, "assets/Million_ants_2.png");
@@ -27,7 +26,6 @@ public class MillionAnts extends Enemy {
         antsSprite = antsSprite1;
         spriteState = false;
         this.X = finalX;
-        this.Y = initialY;
     }
 
     @Override

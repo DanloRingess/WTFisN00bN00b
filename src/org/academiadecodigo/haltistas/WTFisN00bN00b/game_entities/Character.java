@@ -55,7 +55,7 @@ public class Character extends GameEntity implements Collidable {
 
     private void fall() {
 
-        dirY = 9;
+        dirY = 8;
     }
 
     public void crouch() {
