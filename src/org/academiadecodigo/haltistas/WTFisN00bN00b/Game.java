@@ -64,7 +64,7 @@ public class Game {
                 new Supernova(),
                 new CrocuBot(),
                 new MillionAnts(),
-                new VinceMaximus(),
+                new VanceMaximus(),
                 new AlanRails()
         };
     }

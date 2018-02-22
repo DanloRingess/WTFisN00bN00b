@@ -2,7 +2,7 @@ package org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class VinceMaximus extends Enemy {
+public class VanceMaximus extends Enemy {
 
     private Picture vinceSprite;
 
@@ -12,6 +12,11 @@ public class VinceMaximus extends Enemy {
     private int finalX = -700;
     private int finalY = 200;
 
+    private Picture vinceSprite1 = new Picture(finalX, finalY, "assets/Vance_Maximus.png");
+    private Picture vinceSprite2 = new Picture(finalX, finalY, "assets/Vance_Maximus_2.png");
+
+    private boolean spriteState;
+
     private int X;
     private int Y;
 
@@ -20,37 +25,41 @@ public class VinceMaximus extends Enemy {
 
     private boolean rising = false;
 
-    public VinceMaximus() {
+    public VanceMaximus() {
 
-        vinceSprite = new Picture(finalX, finalY, "assets/vince_maximus.png");
+        vinceSprite = vinceSprite1;
+        spriteState = false;
         this.X = finalX;
         this.Y = finalY;
-        show();
     }
 
     @Override
     public void show() {
 
         vinceSprite.draw();
-
     }
 
     @Override
     public void hide() {
 
         vinceSprite.delete();
-
     }
 
     @Override
     public void move() {
+
+        if (this.X % 200 == 0) {
+            changeSprite();
+        }
 
         if (X > finalX) {
             if (Y < 251 && !rising) {
 
                 dirY = 5;
 
-                vinceSprite.translate(dirX, dirY);
+                vinceSprite1.translate(dirX, dirY);
+                vinceSprite2.translate(dirX, dirY);
+
 
                 this.X += dirX;
                 this.Y += dirY;
@@ -64,7 +73,8 @@ public class VinceMaximus extends Enemy {
 
                 dirY = -5;
 
-                vinceSprite.translate(dirX, dirY);
+                vinceSprite1.translate(dirX, dirY);
+                vinceSprite2.translate(dirX, dirY);
 
                 this.X += dirX;
                 this.Y += dirY;
@@ -73,9 +83,25 @@ public class VinceMaximus extends Enemy {
                     rising = false;
                 }
             }
+        }
+    }
 
+    private void changeSprite() {
+
+        if (spriteState) {
+            vinceSprite.delete();
+            vinceSprite = vinceSprite2;
+            vinceSprite.draw();
+
+            spriteState = false;
+            return;
         }
 
+        vinceSprite.delete();
+        vinceSprite = vinceSprite1;
+        vinceSprite.draw();
+
+        spriteState = true;
     }
 
     @Override
