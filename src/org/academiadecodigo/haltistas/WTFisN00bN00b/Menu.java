@@ -9,29 +9,45 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Menu {
 
+<<<<<<< HEAD
     private GamePlace gamePlace;
     private Picture imageBackgroung, imageMainMenu, imageGameover;
+=======
+    private GameMode gameMode;
+    private Canvas image;
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
 
     public Menu() {
         new MenuController();
+<<<<<<< HEAD
         this.imageBackgroung = new Picture(10, 10, "assets/background.png");
         this.imageMainMenu = new Picture(10, 10, "assets/main_menu.png");
         this.imageGameover = new Picture(10, 10, "assets/worldenders_cave.jpeg");
         this.gamePlace = GamePlace.MENU;
 
+=======
+
+        this.image = image;
+        this.gameMode = GameMode.MENU;
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
     }
 
 
-    public GamePlace play() throws InterruptedException {
+    public GameMode play() throws InterruptedException {
 
         showMainMenu();
 
-        while (gamePlace == GamePlace.MENU) {
+        while (gameMode == GameMode.MENU) {
             Thread.sleep(50);
         }
 
+<<<<<<< HEAD
         imageMainMenu.delete();
         return gamePlace;
+=======
+        image.hide();
+        return gameMode;
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
     }
 
     public void showBackground() {
@@ -74,11 +90,15 @@ public class Menu {
             Quit.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             k.addEventListener(Quit);
 
+<<<<<<< HEAD
             KeyboardEvent NewGame = new KeyboardEvent();
             NewGame.setKey(KeyboardEvent.KEY_N);
             NewGame.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             k.addEventListener(NewGame);
         }
+=======
+       }
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
 
         @Override
         public void keyPressed(KeyboardEvent e) {
@@ -86,10 +106,17 @@ public class Menu {
             System.out.println(e.getKeyboardEventType());
             switch (e.getKey()) {
                 case KeyboardEvent.KEY_S:
+<<<<<<< HEAD
                     gamePlace = GamePlace.START;
                     break;
                 case KeyboardEvent.KEY_X:
                     gamePlace = GamePlace.QUIT;
+=======
+                    gameMode = GameMode.START;
+                    break;
+               case KeyboardEvent.KEY_X:
+                    gameMode = GameMode.QUIT;
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
                     break;
                 case KeyboardEvent.KEY_N:
                     gamePlace = GamePlace.ENDGAME;

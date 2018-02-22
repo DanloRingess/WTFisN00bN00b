@@ -4,12 +4,23 @@ import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+<<<<<<< HEAD
+=======
+
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
 
 
 public class Game {
 
+<<<<<<< HEAD
     private Menu image;
     private GamePlace gamePlace;
+=======
+    private Canvas background;
+
+    private Menu menu;
+    private GameMode gameMode;
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
     private Text score, stage;
     private Enemy[] enemy;
     private Enemy activeEnemy;
@@ -22,6 +33,21 @@ public class Game {
     private int delay;
 
     public Game() {
+<<<<<<< HEAD
+=======
+        this.score = new Text(1150, 61, "");
+        this.score.grow(20, 20);
+        this.stage = new Text(230, 64, "");
+        this.stage.grow(15, 22);
+
+    }
+
+    public void gameInit() throws InterruptedException {
+
+        menu = new Menu(new Canvas(10, 10, "assets/main_menu.png"));
+
+        gameMode = menu.play();
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
 
         this.image = new Menu();
         n00bn00b = new Character();
@@ -31,11 +57,19 @@ public class Game {
 
     public void gameInit() throws InterruptedException {
 
+<<<<<<< HEAD
         gamePlace = image.play();
         if (gamePlace == GamePlace.QUIT) {
             System.exit(0);
         }
         if (gamePlace == GamePlace.START) {
+=======
+        if (gameMode == GameMode.QUIT) {
+            System.exit(0);
+        }
+
+        if (gameMode == GameMode.START) {
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
             start();
         }
     }
@@ -44,12 +78,21 @@ public class Game {
 
         image.showGameOver();
 
+<<<<<<< HEAD
         while (gameOver) {
 
             if (image.getGamePlace() == GamePlace.ENDGAME) {
                 gameOver = false;
                 gameInit();
             }
+=======
+        if (gameMode == GameMode.QUIT) {
+            System.exit(0);
+        }
+
+        if (gameMode == GameMode.START) {
+            gameInit();
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3
         }
     }
 
@@ -85,7 +128,7 @@ public class Game {
                 new Supernova(),
                 new CrocuBot(),
                 new MillionAnts(),
-                new VinceMaximus(),
+                new VanceMaximus(),
                 new AlanRails()
         };
     }

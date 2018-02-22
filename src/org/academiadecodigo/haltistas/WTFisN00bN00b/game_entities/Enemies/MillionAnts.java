@@ -6,14 +6,16 @@ public class MillionAnts extends Enemy {
 
     Picture antsSprite;
 
-    private int initialX = 1200;
-    private int initialY = 500;
+    private int initialX = 1100;
+    private int initialY = 400;
 
     private int finalX = -600;
-    private int finalY = 500;
+    private int finalY = 400;
 
-    Picture antsSprite1 = new Picture(finalX, finalY, "assets/million_ants.png");
-    Picture antsSprite2 = new Picture(finalX, finalY, "assets/million_ants_2.png");
+    Picture antsSprite1 = new Picture(finalX, finalY, "assets/Million_ants.png");
+    Picture antsSprite2 = new Picture(finalX, finalY, "assets/Million_ants_2.png");
+
+    private boolean spriteState;
 
     private int X;
     private int Y;
@@ -23,6 +25,7 @@ public class MillionAnts extends Enemy {
     public MillionAnts() {
 
         antsSprite = antsSprite1;
+        spriteState = false;
         this.X = finalX;
         this.Y = initialY;
     }
@@ -42,22 +45,31 @@ public class MillionAnts extends Enemy {
     @Override
     public void move() {
 
-        antsSprite1.translate(dirX,0);
+        antsSprite1.translate(dirX, 0);
         antsSprite2.translate(dirX, 0);
         this.X += dirX;
 
-        if (this.X % 400 == 0 ) {
-            antsSprite.delete();
-            antsSprite = antsSprite2;
-            antsSprite.draw();
-            return;
-        }
-
         if (this.X % 200 == 0) {
+            changeSprite();
+        }
+    }
+
+    private void changeSprite() {
+
+        if (spriteState) {
             antsSprite.delete();
             antsSprite = antsSprite1;
             antsSprite.draw();
+
+            spriteState = false;
+            return;
         }
+
+        antsSprite.delete();
+        antsSprite =  antsSprite2;
+        antsSprite.draw();
+
+        spriteState = true;
     }
 
     @Override
@@ -65,7 +77,7 @@ public class MillionAnts extends Enemy {
 
         antsSprite1.translate(initialX - lastX, 0);
         antsSprite2.translate(initialX - lastX, 0);
-        this.X  = initialX;
+        this.X = initialX;
     }
 
     @Override
@@ -88,8 +100,4 @@ public class MillionAnts extends Enemy {
         return antsSprite.getHeight();
     }
 
-    @Override
-    public int getFinalX() {
-        return finalX;
-    }
 }

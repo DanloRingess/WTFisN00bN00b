@@ -1,119 +1,29 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies;
 
+import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.GameEntity;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.interfaces.Collidable;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Character extends GameEntity implements Collidable {
+public abstract class Enemy extends GameEntity {
 
-    private Picture characterSprite;
+    private int initialX;
+    private int initialY;
 
-    private boolean jumping;
+    private int finalX;
+    private int finalY;
 
-    private int intialX = 80;
-    private int initialY = 450;
+    abstract public void moveBack(int lastX);
 
-    private int X;
-    private int Y;
-
-    private int dirY;
-
-    public Character() {
-
-        characterSprite = new Picture(intialX, initialY, "assets/n00b_haltista.png");
-        jumping = false;
-        this.X = intialX;
-        this.Y = initialY;
-    }
-
-    @Override
-    public void move() {
-
-        if (!jumping) {
-            return;
-        }
-
-        this.Y += dirY;
-        characterSprite.translate(0, dirY);
-
-        if (Y <= 100) {
-            fall();
-
-        }
-
-        if (Y >= initialY) {
-            jumping = false;
-        }
-    }
-
-    public void jump(){
-        if (!jumping) {
-
-            dirY = -10;
-            jumping = true;
-        }
-    }
-
-    private void fall() {
-        dirY = 9;
-
-    }
-    public void crouch() {
-
-        if (jumping) {
-            dirY = 12;
-        }
-
-    }
-
-    public int getIntialX() {
-        return intialX;
-    }
-
-    public int getInitialY() {
-        return initialY;
-    }
+<<<<<<< HEAD:src/org/academiadecodigo/haltistas/WTFisN00bN00b/game_entities/enemies/Enemy.java
+    abstract public int getFinalX();
 
 
-    @Override
-    public void show() {
-
-        characterSprite.draw();
-    }
-
-    @Override
-    public void hide() {
-
-        characterSprite.delete();
-    }
-
-    public int getX() {
-        return X;
-    }
-
-    public int getY() {
-        return Y;
-    }
-
-    public int getWidth() {
-        return characterSprite.getWidth();
-    }
-
-    public int getHeight() {
-        return characterSprite.getHeight();
-    }
-
-    public void setDirY(int dirY) {
-        this.dirY = dirY;
-    }
-
-
-    @Override
+=======
     public boolean collides(Collidable gameEntity) {
         //the padding creates a sub rectangle that's smaller in percentage,
         //padding = 0 is the original rectangle
         // padding = 1 is a rectangle of area 0.
 
-        double padding = .35;
+        double padding = .2;
 
 
         //calculation of the minimum value of x of this class
@@ -159,12 +69,6 @@ public class Character extends GameEntity implements Collidable {
         return !(isAbove || isBelow || isRight || isLeft);
 
 
-
     }
-
-
+>>>>>>> a042b9437041fe2f0a6a34d2a38abcc883bd97a3:src/org/academiadecodigo/haltistas/WTFisN00bN00b/game_entities/Enemies/Enemy.java
 }
-
-
-
-

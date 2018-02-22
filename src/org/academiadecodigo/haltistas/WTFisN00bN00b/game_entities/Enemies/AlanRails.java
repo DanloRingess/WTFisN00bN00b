@@ -42,8 +42,4 @@ public class AlanRails extends Enemy {
         return 0;
     }
 
-    @Override
-    public int getFinalX() {
-        return 0;
-    }
 }
