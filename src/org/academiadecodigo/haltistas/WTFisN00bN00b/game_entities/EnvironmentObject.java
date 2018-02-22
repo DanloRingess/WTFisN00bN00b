@@ -1,4 +1,4 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities;
 
 public class EnvironmentObject extends GameEntity {
 

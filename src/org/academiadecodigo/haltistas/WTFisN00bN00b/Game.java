@@ -1,11 +1,26 @@
 package org.academiadecodigo.haltistas.WTFisN00bN00b;
 
-import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Character;
-import org.academiadecodigo.haltistas.WTFisN00bN00b.GameEntities.Enemies.*;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.mouse.Mouse;
+import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
+import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
+import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
-public class Game {
+public class Game implements MouseHandler {
 
+    private Mouse m;
+
+
+    private Canvas background;
+
+    private Menu menu;
+    private GamePlace gamePlace;
+    private Text score, stage;
 
     private Enemy[] enemy;
 
@@ -20,25 +35,59 @@ public class Game {
 
     private int delay;
 
-    public void init() {
+    public Game() {
+        menu = new Menu();
+        this.score = new Text(1100, 30, "");
+        this.stage = new Text(100, 30, "");
 
-        GameCanvas canvas = new GameCanvas();
+        Mouse m = new Mouse(this);
+        m.addEventListener(MouseEventType.MOUSE_CLICKED);
+        m.addEventListener(MouseEventType.MOUSE_MOVED);
+    }
+
+    public void mainMenu() {
+
+        background = new Canvas(10, 10, "assets/n00b.jpg");
+
+
+    }
+
+    public void gameInit() throws InterruptedException {
+
+        gamePlace = GamePlace.MENU;
+        gamePlace = menu.play();
+
+        background = new Canvas(10, 10, "assets/background.png");
+
+        System.out.println("i'll bite");
+        //background.setBackground(10, 10, "assets/worldenders_cave.jpeg");
 
         generateEnemies();
 
         n00bn00b = new Character();
         n00bn00b.show();
 
-        controller = new Controller(n00bn00b);
+        controller = new Controller(n00bn00b, this);
+        controller.keyboardInitGame();
 
-        controller.keyboardInit();
+        if (gamePlace == GamePlace.QUIT) {
+            System.exit(0);
+        }
+        if (gamePlace == GamePlace.ENDGAME) {
+            gameInit();
+        }
 
-        tickCounter = 0;                  // number of times while loop runs
+        if (gamePlace == GamePlace.START) {
+            start();
+        }
+        //start();
 
-        delay = 15;
     }
 
-    public void start() throws InterruptedException {
+    private void start() throws InterruptedException {
+
+        tickCounter = 0;                  // number of times while loop runs
+        delay = 15;
 
         while (true) {
 
@@ -50,17 +99,23 @@ public class Game {
 
             n00bn00b.move();
 
+            actionWhenCollides();
+
             tickCounter++;
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
 
-            System.out.println(tickCounter);
-            System.out.println(cycleCounter);
+            scoreboard();
+
+            //System.out.println(tickCounter);
+            //System.out.println(cycleCounter);
         }
     }
+
 
     private void generateEnemies() {
 
         enemy = new Enemy[]{
+
                 new Supernova(),
                 new CrocuBot(),
                 new MillionAnts(),
@@ -73,6 +128,13 @@ public class Game {
         if (tickCounter % 165 == 0) {
 
             selectActiveEnemy();
+        }
+    }
+
+    private void actionWhenCollides() {
+        if (collides(n00bn00b, activeEnemy)) {
+            //Action
+            System.exit(0);
         }
     }
 
@@ -132,9 +194,39 @@ public class Game {
 
                     delay -= 1;
                 }
-
-                break;
         }
+    }
+
+    public void scoreboard() {
+
+        int Stage = (cycleCounter / 10) + 1;
+
+        score.setText("SCORE:      " + tickCounter / 5);
+        score.setColor(Color.WHITE);
+        score.draw();
+
+        stage.setText("LEVEL: " + Stage);
+        stage.setColor(Color.WHITE);
+        stage.draw();
+
+
+    }
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        System.out.println(e);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+        System.out.println(e);
+
+    }
+
+    public static boolean collides(Character n00bn00b, Enemy enemy) {
+        return n00bn00b.collides(enemy);
     }
 }
 
