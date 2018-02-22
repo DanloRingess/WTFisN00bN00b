@@ -4,31 +4,52 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
 public class Menu {
 
     private GamePlace gamePlace;
-    private Canvas image;
+    private Picture imageBackgroung, imageMainMenu, imageGameover;
 
-    public Menu(Canvas image) {
+    public Menu() {
         new MenuController();
-
-        this.image = image;
+        this.imageBackgroung = new Picture(10, 10, "assets/background.png");
+        this.imageMainMenu = new Picture(10, 10, "assets/main_menu.png");
+        this.imageGameover = new Picture(10, 10, "assets/worldenders_cave.jpeg");
         this.gamePlace = GamePlace.MENU;
+
     }
 
 
     public GamePlace play() throws InterruptedException {
 
-        image.show();
+        showMainMenu();
 
         while (gamePlace == GamePlace.MENU) {
             Thread.sleep(50);
         }
 
-        image.hide();
+        imageMainMenu.delete();
         return gamePlace;
+    }
+
+    public void showBackground() {
+        imageBackgroung.draw();
+        imageGameover.delete();
+        imageMainMenu.delete();
+    }
+
+    public void showMainMenu() {
+        imageMainMenu.draw();
+        imageGameover.delete();
+        imageBackgroung.delete();
+    }
+
+    public void showGameOver() {
+        imageGameover.draw();
+        imageBackgroung.delete();
+        imageMainMenu.delete();
     }
 
 
@@ -42,6 +63,7 @@ public class Menu {
         }
 
         private void keyboardInit() {
+
             KeyboardEvent Game = new KeyboardEvent();
             Game.setKey(KeyboardEvent.KEY_S);
             Game.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -52,24 +74,26 @@ public class Menu {
             Quit.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             k.addEventListener(Quit);
 
-            KeyboardEvent newGame = new KeyboardEvent();
-            newGame.setKey(KeyboardEvent.KEY_N);
-            newGame.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-            k.addEventListener(newGame);
+            KeyboardEvent NewGame = new KeyboardEvent();
+            NewGame.setKey(KeyboardEvent.KEY_N);
+            NewGame.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+            k.addEventListener(NewGame);
         }
 
         @Override
         public void keyPressed(KeyboardEvent e) {
 
+            System.out.println(e.getKeyboardEventType());
             switch (e.getKey()) {
                 case KeyboardEvent.KEY_S:
                     gamePlace = GamePlace.START;
                     break;
-                case KeyboardEvent.KEY_N:
-                    gamePlace = GamePlace.ENDGAME;
-                    break;
                 case KeyboardEvent.KEY_X:
                     gamePlace = GamePlace.QUIT;
+                    break;
+                case KeyboardEvent.KEY_N:
+                    gamePlace = GamePlace.ENDGAME;
+
                     break;
                 default:
                     System.err.println("JVM isn't working");
@@ -81,6 +105,9 @@ public class Menu {
         }
     }
 
+    public GamePlace getGamePlace() {
+        return gamePlace;
+    }
 
 
 }

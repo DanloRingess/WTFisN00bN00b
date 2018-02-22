@@ -4,26 +4,17 @@ import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
-
 
 
 public class Game {
 
-    private Canvas background;
-
-    private Menu menu;
+    private Menu image;
     private GamePlace gamePlace;
     private Text score, stage;
-
     private Enemy[] enemy;
-
     private Enemy activeEnemy;
-
     private Character n00bn00b;
-
     private Controller controller;
-
     private int tickCounter;
     private int cycleCounter;
     private boolean gameOver;
@@ -31,28 +22,19 @@ public class Game {
     private int delay;
 
     public Game() {
-        this.score = new Text(1150, 61, "");
-        this.score.grow(20, 20);
-        this.stage = new Text(230, 64, "");
-        this.stage.grow(15, 22);
 
+        this.image = new Menu();
+        n00bn00b = new Character();
+        controller = new Controller(n00bn00b, this);
+        controller.keyboardInitGame();
     }
 
     public void gameInit() throws InterruptedException {
 
-        menu = new Menu(new Canvas(10, 10, "assets/main_menu.png"));
-
-        gamePlace = menu.play();
-
-        n00bn00b = new Character();
-
-        controller = new Controller(n00bn00b, this);
-        controller.keyboardInitGame();
-
+        gamePlace = image.play();
         if (gamePlace == GamePlace.QUIT) {
             System.exit(0);
         }
-
         if (gamePlace == GamePlace.START) {
             start();
         }
@@ -60,48 +42,41 @@ public class Game {
 
     public void endGame() throws InterruptedException {
 
-        //menu = new Menu(new Canvas(10, 10, "assets/worldenders_cave.jpeg"));
+        image.showGameOver();
 
-        if (gamePlace == GamePlace.QUIT) {
-            System.exit(0);
+        while (gameOver) {
+
+            if (image.getGamePlace() == GamePlace.ENDGAME) {
+                gameOver = false;
+                gameInit();
+            }
         }
-
-        if (gamePlace == GamePlace.START) {
-            gameInit();
-        }
-
-        gameOver=false;
     }
-
 
     private void start() throws InterruptedException {
 
-        background = new Canvas(10, 10, "assets/background.png");
+        this.score = new Text(1150, 61, "");
+        this.score.grow(20, 20);
+        this.stage = new Text(230, 64, "");
+        this.stage.grow(15, 22);
+
+        image.showBackground();
         generateEnemies();
         n00bn00b.show();
         tickCounter = 0;                  // number of times while loop runs
         delay = 15;
 
         while (!gameOver) {
-
             Thread.sleep(delay);
-
             checkEnemyCycle();
-
             activeEnemy.move();
-
             n00bn00b.move();
-
             actionWhenCollides();
-
             tickCounter++;
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
-
             scoreboard();
-
         }
     }
-
 
     private void generateEnemies() {
 
@@ -117,7 +92,6 @@ public class Game {
 
     private void checkEnemyCycle() {
         if (tickCounter % 165 == 0) {
-
             selectActiveEnemy();
         }
     }
@@ -127,10 +101,10 @@ public class Game {
             //Action TODO
             gameOver = true;
             System.out.println(tickCounter);
-            endGame();
+            System.exit(0);
+
         }
     }
-
     private void selectActiveEnemy() {
 
         switch (cycleCounter % 10) {
@@ -193,11 +167,12 @@ public class Game {
     public void scoreboard() {
 
         int level = (cycleCounter / 10) + 1;
-
+        score.delete();
         score.setText("" + tickCounter / 5);
         score.setColor(Color.WHITE);
         score.draw();
 
+        stage.delete();
         stage.setText("" + level);
         stage.setColor(Color.WHITE);
         stage.draw();
