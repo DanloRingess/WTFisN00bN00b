@@ -10,18 +10,18 @@ public class Game {
 
     private Menu menu;
     private GameMode gameMode;
-    private Text score, stage;
     private Enemy[] enemy;
     private Enemy activeEnemy;
     private Character n00bn00b;
     private Controller controller;
-    private int tickCounter;
-    private int cycleCounter;
-    private boolean gameOver;
     private EnvironmentObject environmentObject;
+    private Scoreboard scoreboard;
 
+    private int cycleCounter;
+    private int tickCounter;
     private int delay;
 
+    private boolean gameOver;
 
     public Game() {
         this.menu = new Menu();
@@ -49,15 +49,16 @@ public class Game {
 
     private void start() throws InterruptedException {
 
-        this.score = new Text(1150, 61, "");
-        this.score.grow(20, 20);
-        this.stage = new Text(230, 64, "");
-        this.stage.grow(15, 22);
+        scoreboard = new Scoreboard(this);
 
         menu.showBackground();
+
         generateEnemies();
+
         n00bn00b.show();
+
         tickCounter = 0;                  // number of times while loop runs
+
         delay = 16;
 
         while (!gameOver) {
@@ -78,7 +79,7 @@ public class Game {
 
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
 
-            scoreboard();
+            scoreboard.show();
         }
     }
 
@@ -168,25 +169,18 @@ public class Game {
         }
     }
 
-    public void scoreboard() {
 
-        int level = (cycleCounter / 10) + 1;
-        score.delete();
-        score.setText("" + tickCounter / 5);
-        score.setColor(Color.WHITE);
-        score.draw();
-
-        stage.delete();
-        stage.setText("" + level);
-        stage.setColor(Color.WHITE);
-        stage.draw();
-
-    }
-
-    public static boolean collides(Character n00bn00b, Enemy enemy) {
+    private static boolean collides(Character n00bn00b, Enemy enemy) {
         return n00bn00b.collides(enemy);
     }
 
+    public int getCycleCounter() {
+        return cycleCounter;
+    }
+
+    public int getTickCounter() {
+        return tickCounter;
+    }
 }
 
 
