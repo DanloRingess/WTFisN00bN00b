@@ -11,11 +11,11 @@ public class EntitySelector {
 
     private Enemy[] enemy = generateEnemies();
 
-    EntitySelector(Game game) {
+    public EntitySelector(Game game) {
         this.game = game;
     }
 
-    public Enemy[] generateEnemies() {
+    private Enemy[] generateEnemies() {
 
         return new Enemy[]{
 

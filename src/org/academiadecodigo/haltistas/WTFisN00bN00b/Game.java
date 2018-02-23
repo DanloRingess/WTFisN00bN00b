@@ -11,7 +11,7 @@ public class Game {
 
     private Enemy activeEnemy;
     private Character n00bn00b;
-    private EnvironmentObject environmentObject;
+    private EnvironmentObject television;
 
     private EntitySelector selector;
     private Controller controller;
@@ -26,7 +26,7 @@ public class Game {
         this.menu = new Menu();
         this.n00bn00b = new Character();
         this.controller = new Controller(n00bn00b, this);
-        this.environmentObject = new EnvironmentObject();
+        this.television = new EnvironmentObject();
     }
 
 
@@ -58,6 +58,8 @@ public class Game {
 
         n00bn00b.show();
 
+        television.show();
+
         tickCounter = 0;                  // counts the number of times while loop runs
 
         delay = 16;
@@ -76,7 +78,7 @@ public class Game {
 
             activeEnemy.move();
 
-            environmentObject.move();
+            television.move();
 
             n00bn00b.move();
 
@@ -98,7 +100,7 @@ public class Game {
 
             activeEnemy = selector.getActiveEnemy();
 
-            environmentObject.moveBack(environmentObject.getX());
+            television.moveBack(television.getX());
             activeEnemy.moveBack(activeEnemy.getX());
         }
     }
@@ -106,7 +108,7 @@ public class Game {
 
     private void actionWhenCollides() {
         if (checkCollision(n00bn00b, activeEnemy)) {
-            
+
             System.exit(0);
         }
     }

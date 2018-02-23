@@ -6,11 +6,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class EnvironmentObject extends GameEntity {
 
     private Picture environmentObject;
-    private int initialX = 1050;
+    private int initialX = 550;
 
     private int X;
 
-    private int dirX = -2;
+    private int dirX = -3;
 
     public EnvironmentObject() {
 
@@ -19,9 +19,9 @@ public class EnvironmentObject extends GameEntity {
 
     public void moveBack(int lastX) {
 
-        if (X < -600) {
-        environmentObject.translate(initialX - lastX, 0);
-        this.X = initialX;
+        if (X < -500) {
+            environmentObject.translate(initialX - lastX, 0);
+            this.X = initialX;
         }
     }
 
