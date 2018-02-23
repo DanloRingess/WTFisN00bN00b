@@ -115,7 +115,7 @@ public class Game {
     }
 
     private void checkEnemyCycle() {
-        if (tickCounter % 165 == 0) {
+        if (tickCounter % 150 == 0) {
 
             selectActiveEnemy();
         }
