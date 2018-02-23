@@ -2,14 +2,75 @@ package org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies;
 
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.GameEntity;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.interfaces.Collidable;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public abstract class Enemy extends GameEntity implements Collidable {
 
-    protected static int SPEED = -10;
+    protected Picture enemySprite;
+    protected Picture eSprite1;
+    protected Picture eSprite2;
 
-    protected static int FINALX = -700;
+    protected static int speed = -10;
+    protected static int positionCalibrator = 30;
 
-    abstract public void moveBack(int lastX);
+    protected int finalY;
+    protected int initialX;
+    protected int X;
+
+    protected boolean spriteState;
+
+
+    public Enemy(Picture eSprite1, Picture eSprite2,int initialX,int finalY) {
+        this.enemySprite = eSprite1;
+        this.eSprite1 = eSprite1;
+        this.eSprite2 = eSprite2;
+        this.initialX = initialX;
+        this.finalY = finalY;
+    }
+
+    @Override
+    public void show() {
+
+        enemySprite.draw();
+    }
+
+    @Override
+    public void move() {
+
+        eSprite1.translate(speed, 0);
+        eSprite2.translate(speed, 0);
+        this.X += speed;
+
+        if (this.X % 200 == 0) {
+
+            changeSprite();
+        }
+    }
+
+    public void changeSprite() {
+
+        if (spriteState) {
+            enemySprite.delete();
+            enemySprite = eSprite1;
+            enemySprite.draw();
+
+            spriteState = false;
+            return;
+        }
+
+        enemySprite.delete();
+        enemySprite =  eSprite2;
+        enemySprite.draw();
+
+        spriteState = true;
+    }
+
+    public void moveBack(int lastX) {
+
+        eSprite1.translate(initialX - lastX, 0);
+        eSprite2.translate(initialX - lastX, 0);
+        this.X = initialX;
+    }
 
     public boolean collides(Collidable gameEntity) {
         //the padding creates a sub rectangle that's smaller in percentage,

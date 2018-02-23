@@ -4,36 +4,18 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class AlanRails extends Enemy {
 
-
-    private final int initialX = 1000;
-
-    private final int finalY = 400;
-
-    private Picture alanSprite = new Picture(FINALX,finalY, "assets/Alan.png");
-
-    private int X;
-
     public AlanRails()  {
-        this.X = FINALX;
-        alanSprite.draw();
-    }
-
-    @Override
-    public void moveBack(int lastX) {
-        alanSprite.translate(initialX - lastX, 0);
-        this.X = initialX;
-    }
-
-    @Override
-    public void show() {
-        alanSprite.draw();
+        super(new Picture(positionCalibrator,400,"assets/Alan.png"),new Picture(positionCalibrator,400,"assets/Alan_2.png"),1000,400);
     }
 
     @Override
     public void move() {
+        super.move();
+    }
 
-        alanSprite.translate(SPEED, 0);
-        this.X += SPEED;
+    @Override
+    public void moveBack(int lastX) {
+        super.moveBack(lastX);
     }
 
     @Override
@@ -48,12 +30,12 @@ public class AlanRails extends Enemy {
 
     @Override
     public int getWidth() {
-        return alanSprite.getWidth();
+        return enemySprite.getWidth();
     }
 
     @Override
     public int getHeight() {
-        return alanSprite.getHeight();
+        return enemySprite.getHeight();
     }
 
 }

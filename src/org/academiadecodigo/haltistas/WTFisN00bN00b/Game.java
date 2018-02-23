@@ -94,7 +94,7 @@ public class Game {
             actionWhenCollides();
 
             tickCounter++;
-            cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
+            cycleCounter = tickCounter / 150; // number of game cycles (150 ticks per cycle)
 
             scoreboard();
 
