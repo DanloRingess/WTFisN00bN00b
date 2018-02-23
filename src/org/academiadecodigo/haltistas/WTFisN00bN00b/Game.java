@@ -58,17 +58,26 @@ public class Game {
         generateEnemies();
         n00bn00b.show();
         tickCounter = 0;                  // number of times while loop runs
-        delay = 15;
+        delay = 16;
 
         while (!gameOver) {
+
             Thread.sleep(delay);
-            checkEnemyCycle();
+
+            checkCycle();
+
             activeEnemy.move();
+
             environmentObject.move();
+
             n00bn00b.move();
+
             actionWhenCollides();
+
             tickCounter++;
+
             cycleCounter = tickCounter / 165; // number of game cycles (150 ticks per cycle)
+
             scoreboard();
         }
     }
@@ -85,10 +94,10 @@ public class Game {
         };
     }
 
-    private void checkEnemyCycle() {
+    private void checkCycle() {
         if (tickCounter % 165 == 0) {
             selectActiveEnemy();
-            selectActiveDecorations();
+            environmentObject.moveBack(environmentObject.getX());
         }
     }
 
@@ -99,12 +108,6 @@ public class Game {
             System.exit(0);
         }
     }
-
-    private void selectActiveDecorations() {
-
-        environmentObject.selectActiveNoCollibleObject();
-    }
-
 
     private void selectActiveEnemy() {
 
@@ -158,7 +161,7 @@ public class Game {
                 activeEnemy = enemy[1];
                 activeEnemy.moveBack(activeEnemy.getX());
 
-                if (delay > 1) {
+                if (delay > 4) {
 
                     delay -= 1;
                 }

@@ -9,15 +9,15 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Menu {
 
-    private Picture imageBackgroung, imageMainMenu, imageGameover;
+    private Picture imageBackground;
+    private Picture imageMainMenu;
     private GameMode gameMode;
 
     public Menu() {
 
         new MenuController();
-        this.imageBackgroung = new Picture(10, 10, "assets/background.png");
+        this.imageBackground = new Picture(10, 10, "assets/background.png");
         this.imageMainMenu = new Picture(10, 10, "assets/main_menu.png");
-        this.imageGameover = new Picture(10, 10, "assets/worldenders_cave.jpeg");
         this.gameMode = GameMode.MENU;
     }
 
@@ -36,15 +36,13 @@ public class Menu {
     }
 
     public void showBackground() {
-        imageBackgroung.draw();
-        imageGameover.delete();
+        imageBackground.draw();
         imageMainMenu.delete();
     }
 
     public void showMainMenu() {
         imageMainMenu.draw();
-        imageGameover.delete();
-        imageBackgroung.delete();
+        imageBackground.delete();
     }
 
     private class MenuController implements KeyboardHandler {
@@ -72,7 +70,6 @@ public class Menu {
         @Override
         public void keyPressed(KeyboardEvent e) {
 
-            System.out.println(e.getKeyboardEventType());
             switch (e.getKey()) {
                 case KeyboardEvent.KEY_S:
                     gameMode = GameMode.START;

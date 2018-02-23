@@ -5,7 +5,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Supernova extends Enemy {
 
     public Supernova() {
-        super(new Picture(positionCalibrator, 400, "assets/Supernova.png"), new Picture(positionCalibrator, 400, "assets/Supernova_2.png"), 1050, 400);
+        super(new Picture(positionCalibrator, 410, "assets/Supernova.png"), new Picture(positionCalibrator, 410, "assets/Supernova_2.png"), 1050, 410);
     }
 
     @Override

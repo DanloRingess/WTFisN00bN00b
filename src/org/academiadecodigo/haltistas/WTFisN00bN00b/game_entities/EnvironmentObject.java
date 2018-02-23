@@ -6,54 +6,39 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class EnvironmentObject extends GameEntity {
 
     private Picture environmentObject;
-    private int initialX = 550;
-    private int finalY = 10;
+    private int initialX = 1050;
 
     private int X;
-    private int Y;
 
     private int dirX = -2;
 
     public EnvironmentObject() {
 
-        environmentObject = new Picture(initialX, finalY, "assets/TV.png");
-
-
+        environmentObject = new Picture(initialX, 10, "assets/TV.png");
     }
-
-    public void selectActiveNoCollibleObject() {
-
-        if (getX() < -600) {
-            moveBack(getX());
-        }
-    }
-
 
     public void moveBack(int lastX) {
 
+        if (X < -600) {
         environmentObject.translate(initialX - lastX, 0);
         this.X = initialX;
+        }
     }
-
 
     public void show() {
 
         environmentObject.draw();
     }
 
-
     public void move() {
 
         environmentObject.translate(dirX, 0);
         this.X += dirX;
-        environmentObject.draw();
     }
-
 
     public int getX() {
         return X;
     }
-
 }
 
 
