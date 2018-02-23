@@ -3,8 +3,6 @@ package org.academiadecodigo.haltistas.WTFisN00bN00b;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.EnvironmentObject;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class Game {
 
@@ -106,14 +104,14 @@ public class Game {
 
 
     private void actionWhenCollides() {
-        if (collides(n00bn00b, activeEnemy)) {
+        if (checkCollision(n00bn00b, activeEnemy)) {
             
             System.exit(0);
         }
     }
 
 
-    private static boolean collides(Character n00bn00b, Enemy enemy) {
+    private static boolean checkCollision(Character n00bn00b, Enemy enemy) {
         return n00bn00b.collides(enemy);
     }
 
