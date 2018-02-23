@@ -5,7 +5,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class VanceMaximus extends Enemy {
 
     public VanceMaximus() {
-        super(new Picture(xPositionCalibrator, 320, "assets/Vance_Maximus.png"),new Picture(xPositionCalibrator, 320, "assets/Vance_Maximus_2.png"),900,320);
+        super(new Picture(xPositionCalibrator, 320, "../assets/Vance_Maximus.png"),new Picture(xPositionCalibrator, 320, "../assets/Vance_Maximus_2.png"),900,320);
     }
 
     @Override

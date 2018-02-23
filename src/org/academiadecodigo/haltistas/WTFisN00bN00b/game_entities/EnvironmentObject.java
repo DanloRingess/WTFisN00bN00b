@@ -14,7 +14,7 @@ public class EnvironmentObject extends GameEntity {
 
     public EnvironmentObject() {
 
-        environmentObject = new Picture(initialX, 10, "assets/TV.png");
+        environmentObject = new Picture(initialX, 10, "../assets/TV.png");
     }
 
     public void moveBack(int lastX) {

@@ -19,7 +19,7 @@ public class Character extends GameEntity implements Collidable {
 
     public Character() {
 
-    characterSprite = new Picture(intialX, initialY, "assets/N00b.png");
+    characterSprite = new Picture(intialX, initialY, "../assets/N00b.png");
         jumping = false;
         this.X = intialX;
         this.Y = initialY;

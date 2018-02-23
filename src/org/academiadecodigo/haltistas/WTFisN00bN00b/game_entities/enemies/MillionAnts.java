@@ -5,7 +5,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class MillionAnts extends Enemy {
 
     public MillionAnts() {
-        super(new Picture(xPositionCalibrator, 400, "assets/Million_ants.png"),new Picture(xPositionCalibrator, 400, "assets/Million_ants_2.png"),1100,410);
+        super(new Picture(xPositionCalibrator, 400, "../assets/Million_ants.png"),new Picture(xPositionCalibrator, 400, "../assets/Million_ants_2.png"),1100,410);
     }
 
     public void move() {

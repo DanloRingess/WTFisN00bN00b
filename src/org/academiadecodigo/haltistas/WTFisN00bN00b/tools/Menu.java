@@ -17,8 +17,8 @@ public class Menu {
     public Menu() {
 
         new MenuController();
-        this.imageBackground = new Picture(10, 10, "assets/background.png");
-        this.imageMainMenu = new Picture(10, 10, "assets/main_menu.png");
+        this.imageBackground = new Picture(10, 10, "../assets/background.png");
+        this.imageMainMenu = new Picture(10, 10, "../assets/main_menu.png");
         this.gameMode = GameMode.MENU;
     }
 
