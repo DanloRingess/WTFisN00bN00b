@@ -5,7 +5,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class AlanRails extends Enemy {
 
     public AlanRails()  {
-        super(new Picture(positionCalibrator,400,"assets/Alan.png"),new Picture(positionCalibrator,400,"assets/Alan_2.png"),1000,400);
+        super(new Picture(positionCalibrator,400,"assets/Alan.png"),new Picture(positionCalibrator,400,"assets/Alan_2.png"),950,400);
     }
 
     @Override
