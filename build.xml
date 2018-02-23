@@ -5,7 +5,7 @@
     <target name="init" description="Initializes properties">
         <property name="project.name" value="WTFisN00bN00b" />
         <property name="src.dir" value="src" />
-        <property name="main.class" value="org.academiadecodigo.bootcamp.haltistas.Main" />
+        <property name="main.class" value="org.academiadecodigo.haltistas.Main" />
         <property name="build.dir" value="build" />
         <property name="classes.dir" value="${build.dir}/classes" />
         <property name="lib.dir" value="lib" />
@@ -40,6 +40,9 @@
                 <attribute name="Class-Path" value="${lib.dir}" />
             </manifest>
             <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
+            <fileset dir=".">
+                <include name="**/${resources.dir}/**"/>
+            </fileset>
         </jar>
     </target>
 
