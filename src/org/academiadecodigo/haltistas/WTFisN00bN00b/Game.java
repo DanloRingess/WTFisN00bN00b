@@ -3,6 +3,7 @@ package org.academiadecodigo.haltistas.WTFisN00bN00b;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.EnvironmentObject;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
+import org.academiadecodigo.haltistas.WTFisN00bN00b.tools.*;
 
 public class Game {
 

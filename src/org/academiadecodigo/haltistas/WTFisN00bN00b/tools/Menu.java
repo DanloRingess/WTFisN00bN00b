@@ -1,5 +1,6 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.tools;
 
+import org.academiadecodigo.haltistas.WTFisN00bN00b.tools.GameMode;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;

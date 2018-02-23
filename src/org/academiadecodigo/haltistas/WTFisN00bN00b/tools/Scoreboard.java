@@ -1,5 +1,6 @@
-package org.academiadecodigo.haltistas.WTFisN00bN00b;
+package org.academiadecodigo.haltistas.WTFisN00bN00b.tools;
 
+import org.academiadecodigo.haltistas.WTFisN00bN00b.Game;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 
