@@ -16,6 +16,7 @@ public class Game {
     private Controller controller;
     private EnvironmentObject environmentObject;
     private Scoreboard scoreboard;
+    private EntitySelector selector;
 
     private int cycleCounter;
     private int tickCounter;
@@ -51,9 +52,11 @@ public class Game {
 
         scoreboard = new Scoreboard(this);
 
+        selector = new EntitySelector(this);
+
         menu.showBackground();
 
-        generateEnemies();
+        enemy = selector.generateEnemies();
 
         n00bn00b.show();
 
@@ -83,92 +86,23 @@ public class Game {
         }
     }
 
-    private void generateEnemies() {
-
-        enemy = new Enemy[]{
-
-                new Supernova(),
-                new CrocuBot(),
-                new MillionAnts(),
-                new VanceMaximus(),
-                new AlanRails()
-        };
-    }
-
     private void checkCycle() {
         if (tickCounter % 165 == 0) {
-            selectActiveEnemy();
+            selector.selectActiveEnemy();
+
+            activeEnemy = selector.getActiveEnemy();
+
             environmentObject.moveBack(environmentObject.getX());
+            activeEnemy.moveBack(activeEnemy.getX());
         }
     }
 
     private void actionWhenCollides() {
-
         if (collides(n00bn00b, activeEnemy)) {
             gameOver = true;
             System.exit(0);
         }
     }
-
-    private void selectActiveEnemy() {
-
-        switch (cycleCounter % 10) {
-            case 0:
-                activeEnemy = enemy[0];
-                activeEnemy.moveBack(activeEnemy.getX());
-                break;
-
-            case 1:
-                activeEnemy = enemy[1];
-                activeEnemy.moveBack(activeEnemy.getX());
-                break;
-
-            case 2:
-                activeEnemy = enemy[2];
-                activeEnemy.moveBack(activeEnemy.getX());
-                break;
-
-            case 3:
-                activeEnemy = enemy[3];
-                activeEnemy.moveBack(activeEnemy.getX());
-                break;
-
-            case 4:
-                activeEnemy = enemy[0];
-                activeEnemy.moveBack(activeEnemy.getX());
-                break;
-
-            case 5:
-                activeEnemy = enemy[1];
-                activeEnemy.moveBack(activeEnemy.getX());
-                break;
-
-            case 6:
-                activeEnemy = enemy[2];
-                activeEnemy.moveBack(activeEnemy.getX());
-                break;
-
-            case 7:
-                activeEnemy = enemy[3];
-                activeEnemy.moveBack(activeEnemy.getX());
-                break;
-
-            case 8:
-                activeEnemy = enemy[0];
-                activeEnemy.moveBack(activeEnemy.getX());
-                break;
-
-            case 9:
-                activeEnemy = enemy[1];
-                activeEnemy.moveBack(activeEnemy.getX());
-
-                if (delay > 4) {
-
-                    delay -= 1;
-                }
-        }
-    }
-
 
     private static boolean collides(Character n00bn00b, Enemy enemy) {
         return n00bn00b.collides(enemy);
@@ -180,6 +114,14 @@ public class Game {
 
     public int getTickCounter() {
         return tickCounter;
+    }
+
+    public void setDelay(int delayDecrement) {
+        this.delay = this.delay - delayDecrement;
+    }
+
+    public int getDelay() {
+        return delay;
     }
 }
 
