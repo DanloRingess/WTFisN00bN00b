@@ -4,6 +4,8 @@ import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.Character;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.EnvironmentObject;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.game_entities.enemies.*;
 import org.academiadecodigo.haltistas.WTFisN00bN00b.tools.*;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class Game {
 
@@ -15,7 +17,6 @@ public class Game {
 
     private EntitySelector selector;
     private Controller controller;
-    private Scoreboard scoreboard;
 
     private int cycleCounter;
     private int tickCounter;
@@ -50,8 +51,6 @@ public class Game {
 
     private void start() throws InterruptedException {
 
-        scoreboard = new Scoreboard(this);
-
         selector = new EntitySelector(this);
 
         menu.showBackground();
@@ -69,6 +68,8 @@ public class Game {
 
 
     private void gameLoop() throws InterruptedException {
+
+        Scoreboard scoreboard = new Scoreboard();
 
         while (true) {
 
@@ -124,7 +125,7 @@ public class Game {
     }
 
 
-    public int getTickCounter() {
+    private int getTickCounter() {
         return tickCounter;
     }
 
@@ -137,6 +138,36 @@ public class Game {
     public int getDelay() {
         return delay;
     }
+
+
+    public class Scoreboard {
+
+        private Text score, stage;
+
+        Scoreboard() {
+
+            this.score = new Text(1150, 61, "");
+            this.score.grow(20, 20);
+            this.stage = new Text(230, 64, "");
+            this.stage.grow(15, 22);
+        }
+
+        void show() {
+
+            int level = (getCycleCounter() / 10) + 1;
+            score.delete();
+            score.setText("" + getTickCounter() / 5);
+            score.setColor(Color.WHITE);
+            score.draw();
+
+            stage.delete();
+            stage.setText("" + level);
+            stage.setColor(Color.WHITE);
+            stage.draw();
+
+        }
+    }
+
 }
 
 
