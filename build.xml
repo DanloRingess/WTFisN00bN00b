@@ -1,4 +1,5 @@
 <?xml version="1.0" ?>
+
 <project name="WTFisN00bN00b" default="jarfile">
 
     <!-- Initialize build properties  -->
@@ -9,7 +10,7 @@
         <property name="build.dir" value="build" />
         <property name="classes.dir" value="${build.dir}/classes" />
         <property name="lib.dir" value="lib" />
-        <property name="resources.dir" value="assets" />
+        <property name="resources.dir" value="assets"/>
         <path id="classpath">
             <fileset dir="${lib.dir}" includes="**/*.jar" />
         </path>
