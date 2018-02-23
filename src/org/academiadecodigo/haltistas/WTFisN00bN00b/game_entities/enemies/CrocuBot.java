@@ -5,7 +5,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class CrocuBot extends Enemy {
 
     public CrocuBot() {
-        super(new Picture(positionCalibrator, 410, "assets/Crocubot.png"),new Picture(positionCalibrator, 410, "assets/Crocubot_2.png"),1000,410);
+        super(new Picture(xPositionCalibrator, 410, "assets/Crocubot.png"),new Picture(xPositionCalibrator, 410, "assets/Crocubot_2.png"),1000,410);
     }
 
     @Override

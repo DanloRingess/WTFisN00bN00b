@@ -11,7 +11,7 @@ public abstract class Enemy extends GameEntity implements Collidable {
     protected Picture eSprite2;
 
     protected static int speed = -10;
-    protected static int positionCalibrator = 30;
+    protected static int xPositionCalibrator = 30;
 
     protected int finalY;
     protected int initialX;
