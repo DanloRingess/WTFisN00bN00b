@@ -46,11 +46,11 @@ public class EntitySelector {
                 break;
 
             case 4:
-                activeEnemy = enemy[0];
+                activeEnemy = enemy[4];
                 break;
 
             case 5:
-                activeEnemy = enemy[1];
+                activeEnemy = enemy[0];
                 break;
 
             case 6:
@@ -62,11 +62,11 @@ public class EntitySelector {
                 break;
 
             case 8:
-                activeEnemy = enemy[0];
+                activeEnemy = enemy[1];
                 break;
 
             case 9:
-                activeEnemy = enemy[1];
+                activeEnemy = enemy[4];
 
                 if (game.getDelay() > 4) {
 
