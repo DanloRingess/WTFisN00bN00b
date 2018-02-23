@@ -4,64 +4,18 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class CrocuBot extends Enemy {
 
-    private Picture crocubotSprite;
-
-    private int initialX = 1000;
-    private int initialY = 400;
-
-    private int finalX = -600;
-    private int finalY = 400;
-
-    private Picture crocubotSprite1 = new Picture(finalX, finalY, "assets/Crocubot.png");
-    private Picture crocubotSprite2 = new Picture(finalX, finalY, "assets/Crocubot_2.png");
-
-    private int X;
-    private int Y;
-
-    private int dirX = -10;
-
     public CrocuBot() {
-
-        crocubotSprite = crocubotSprite1;
-        this.X = finalX;
-        this.Y = finalY;
-    }
-
-    @Override
-    public void show() {
-
-        crocubotSprite.draw();
+        super(new Picture(positionCalibrator, 410, "assets/Crocubot.png"),new Picture(positionCalibrator, 410, "assets/Crocubot_2.png"),1000,410);
     }
 
     @Override
     public void move() {
-
-        crocubotSprite1.translate(dirX, 0);
-        crocubotSprite2.translate(dirX, 0);
-        this.X += dirX;
-
-
-        if (this.X % 400 == 0) {
-            crocubotSprite.delete();
-            crocubotSprite = crocubotSprite2;
-            crocubotSprite.draw();
-            return;
-        }
-
-        if (this.X % 200 == 0) {
-            crocubotSprite.delete();
-            crocubotSprite = crocubotSprite1;
-            crocubotSprite.draw();
-        }
-
+        super.move();
     }
 
     @Override
     public void moveBack(int lastX) {
-
-        crocubotSprite1.translate(initialX - lastX, 0);
-        crocubotSprite2.translate(initialX - lastX, 0);
-        this.X = initialX;
+        super.moveBack(lastX);
     }
 
     @Override
@@ -71,17 +25,17 @@ public class CrocuBot extends Enemy {
 
     @Override
     public int getY() {
-        return Y;
+        return finalY;
     }
 
     @Override
     public int getWidth() {
-        return crocubotSprite.getWidth();
+        return enemySprite.getWidth();
     }
 
     @Override
     public int getHeight() {
-        return crocubotSprite.getHeight();
+        return enemySprite.getHeight();
     }
 
 }

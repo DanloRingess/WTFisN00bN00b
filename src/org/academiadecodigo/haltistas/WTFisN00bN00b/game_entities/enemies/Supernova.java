@@ -4,63 +4,18 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Supernova extends Enemy {
 
-    private Picture supernovaSprite;
-
-    private int initialX = 1000;
-    private int initialY = 300;
-
-    private int finalX = -700;
-    private int finalY = 300;
-
-    private Picture supernovaSprite1 = new Picture(finalX, finalY, "assets/Supernova.png");
-    private Picture supernovaSprite2 = new Picture(finalX, finalY, "assets/Supernova_2.png");
-
-    private int X;
-    private int Y;
-
-    private int dirX = -10;
-
     public Supernova() {
-
-        supernovaSprite = supernovaSprite1;
-
-        this.X = finalX;
-        this.Y = finalY;
-    }
-
-    @Override
-    public void show() {
-
-        supernovaSprite.draw();
+        super(new Picture(positionCalibrator, 400, "assets/Supernova.png"), new Picture(positionCalibrator, 400, "assets/Supernova_2.png"), 1050, 400);
     }
 
     @Override
     public void move() {
-
-        supernovaSprite1.translate(dirX, 0);
-        supernovaSprite2.translate(dirX, 0);
-        this.X += dirX;
-
-        if (this.X % 400 == 0) {
-            supernovaSprite.delete();
-            supernovaSprite = supernovaSprite2;
-            supernovaSprite.draw();
-            return;
-        }
-
-        if (this.X % 200 == 0) {
-            supernovaSprite.delete();
-            supernovaSprite = supernovaSprite1;
-            supernovaSprite.draw();
-        }
+        super.move();
     }
 
     @Override
     public void moveBack(int lastX) {
-
-        supernovaSprite1.translate(initialX - lastX, 0);
-        supernovaSprite2.translate(initialX - lastX, 0);
-        this.X = initialX;
+        super.moveBack(lastX);
     }
 
     @Override
@@ -70,18 +25,17 @@ public class Supernova extends Enemy {
 
     @Override
     public int getY() {
-        return Y;
+        return finalY;
     }
 
     @Override
     public int getWidth() {
-        return supernovaSprite.getWidth();
+        return enemySprite.getWidth();
     }
 
     @Override
     public int getHeight() {
-        return supernovaSprite.getHeight();
+        return enemySprite.getHeight();
     }
-
 }
 
